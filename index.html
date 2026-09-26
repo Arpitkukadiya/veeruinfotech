@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Veeru Infotech – Your Technology, Our Priority</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ============================================================
+       GLOBAL RESET & WARM COLOR PALETTE
+       ============================================================ */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #faf7f2;
+      --bg-secondary: #f3ede5;
+      --bg-tertiary: #ede4d8;
+      --bg-card: #ffffff;
+      --text-dark: #2e2b28;
+      --text-medium: #5f554a;
+      --text-light: #8a7b6d;
+      --accent: #d68c45;
+      --accent-dark: #b5722f;
+      --accent-light: #f0d9c0;
+      --navy: #1a2b4a;
+      --navy-light: #2c3e5e;
+      --green: #22c55e;
+      --border-light: #ede6dd;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.03);
+      --shadow-md: 0 8px 24px rgba(0,0,0,0.05);
+      --shadow-lg: 0 18px 40px rgba(0,0,0,0.07);
+      --shadow-xl: 0 25px 60px rgba(0,0,0,0.1);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --radius-xs: 10px;
+      --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --transition-slow: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --topbar-height: 30px;
+      --header-height: 68px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-top: calc(var(--topbar-height) + var(--header-height));
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    /* ============================================================
+       TYPOGRAPHY
+       ============================================================ */
+    h1, h2, h3, h4, h5 { font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    h3 { font-size: clamp(1.1rem, 2vw, 1.35rem); }
+
+    .section-title { text-align: center; margin-bottom: 3rem; position: relative; }
+    .section-title:after {
+      content: ''; display: block; width: 70px; height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      margin: 1rem auto 0; border-radius: 10px;
+    }
+    .section-title p { color: var(--text-medium); max-width: 620px; margin: 0.8rem auto 0; font-weight: 400; }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--accent); color: #fff; padding: 0.85rem 2rem;
+      border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+      border: none; cursor: pointer; transition: var(--transition);
+      box-shadow: 0 6px 18px rgba(214, 140, 69, 0.3); white-space: nowrap;
+      position: relative; overflow: hidden;
+    }
+    .btn:before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 0; height: 0; background: rgba(255,255,255,0.2);
+      border-radius: 50%; transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    .btn:hover:before { width: 400px; height: 400px; }
+    .btn:hover { background: var(--accent-dark); transform: translateY(-3px); box-shadow: 0 10px 24px rgba(214, 140, 69, 0.4); }
+    .btn-outline { background: transparent; border: 2px solid var(--accent); color: var(--accent); box-shadow: none; }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+    .btn-outline-white { background: transparent; border: 2px solid #fff; color: #fff; box-shadow: none; }
+    .btn-outline-white:hover { background: #fff; color: var(--navy); }
+    .btn-white { background: #fff; color: var(--navy); box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+    .btn-white:hover { background: #fff; color: var(--accent); }
+    .btn-sm { padding: 0.6rem 1.4rem; font-size: 0.85rem; }
+
+    /* ============================================================
+       ANIMATIONS
+       ============================================================ */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    @keyframes bounceIn {
+      0% { opacity: 0; transform: scale(0.3); }
+      50% { opacity: 1; transform: scale(1.05); }
+      70% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .animate-up { animation: fadeInUp 0.8s ease-out both; }
+    .animate-left { animation: slideInLeft 0.8s ease-out both; }
+    .animate-right { animation: slideInRight 0.8s ease-out both; }
+    .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; } .delay-4 { animation-delay: 0.4s; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       TOP BAR — FIXED
+       ============================================================ */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--topbar-height);
+      background: linear-gradient(90deg, var(--navy), var(--navy-light));
+      color: #fff;
+      font-size: 0.78rem;
+      z-index: 1002;
+      display: flex;
+      align-items: center;
+    }
+    .top-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .top-bar a { color: rgba(255,255,255,0.85); transition: var(--transition); }
+    .top-bar a:hover { color: var(--accent); }
+    .top-bar i { color: var(--accent); margin-right: 0.4rem; }
+    .top-bar .divider { margin: 0 0.8rem; opacity: 0.3; }
+
+    /* ============================================================
+       HEADER — FIXED BELOW TOP BAR
+       ============================================================ */
+    header {
+      position: fixed;
+      top: var(--topbar-height);
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: var(--header-height);
+      z-index: 1001;
+      transition: var(--transition);
+      background: transparent;
+      display: flex;
+      align-items: center;
+    }
+    header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 1rem;
+    }
+
+        .logo {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .logo .logo-veeru { color: var(--navy); }
+    .logo .logo-info { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .nav-links a {
+      color: var(--text-dark);
+      transition: var(--transition);
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.3rem 0;
+      cursor: pointer;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+    .nav-links a:after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    .nav-links a:hover:after,
+    .nav-links a.active:after { width: 100%; }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--accent); }
+
+    .mobile-toggle {
+      display: none;
+      font-size: 1.4rem;
+      color: var(--navy);
+      cursor: pointer;
+      background: none;
+      border: none;
+      z-index: 1003;
+      padding: 6px;
+    }
+    header:not(.scrolled) .mobile-toggle { color: #5d1010; }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - var(--topbar-height) - var(--header-height));
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #1a2b4a 0%, #2c3e5e 50%, #1a2b4a 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 15s ease infinite;
+      overflow: hidden;
+      padding: 60px 0;
+    }
+    .hero:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      color: #fff;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(214, 140, 69, 0.2);
+      border: 1px solid rgba(214, 140, 69, 0.4);
+      color: var(--accent-light);
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 { color: #fff; margin-bottom: 1.5rem; }
+    .hero-content h1 span { color: var(--accent); }
+    .hero-content p { font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.85); margin-bottom: 2.5rem; }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
+    .hero-stat { text-align: center; color: #fff; }
+    .hero-stat h3 { font-size: 2.2rem; color: var(--accent); font-weight: 800; }
+    .hero-stat p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+
+    .hero-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(214, 140, 69, 0.08);
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-shape-1 { width: 400px; height: 400px; top: 5%; left: -8%; }
+    .hero-shape-2 { width: 250px; height: 250px; bottom: 5%; right: -5%; animation-delay: 2s; }
+    .hero-shape-3 { width: 150px; height: 150px; top: 15%; right: 12%; animation-delay: 4s; }
+
+    /* ============================================================
+       TICKER
+       ============================================================ */
+    .ticker-wrap {
+      background: var(--bg-card);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      width: 100%;
+      max-width: 100%;
+    }
+    .ticker {
+      display: flex;
+      width: max-content;
+      animation: tickerScroll 40s linear infinite;
+      will-change: transform;
+    }
+    .ticker:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0 1.6rem;
+      color: var(--text-medium);
+      font-weight: 500;
+      font-size: 0.88rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ticker-item i {
+      color: var(--accent);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .ticker-item i::before {
+      display: inline-block;
+      min-width: 1em;
+      text-align: center;
+    }
+
+    /* ============================================================
+       SERVICES
+       ============================================================ */
+    .services-section { padding: 5rem 0; background: var(--bg-primary); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2rem 1.4rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card:before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .service-card:hover:before { transform: scaleX(1); }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--accent-light);
+    }
+    .service-card i {
+      font-size: 2.4rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      transition: var(--transition);
+      display: inline-block;
+    }
+    .service-card:hover i { transform: scale(1.2) rotate(-5deg); }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
+    .service-card .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .service-card:hover .card-link { gap: 0.7rem; }
+    .service-card .card-link i { font-size: 0.75rem; margin: 0; }
+
+    /* ============================================================
+       PRODUCTS
+       ============================================================ */
+    .products-section { padding: 5rem 0; background: var(--bg-secondary); }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .product-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--accent-light);
+    }
+    .product-image {
+      height: 220px;
+      background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-image img { max-height: 160px; transition: var(--transition-slow); }
+    .product-card:hover .product-image img { transform: scale(1.1); }
+    .product-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--accent); color: #fff;
+      font-size: 0.7rem; font-weight: 600;
+      padding: 0.35rem 0.8rem; border-radius: 50px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .product-badge.new { background: var(--green); }
+    .product-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .product-category { font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
+    .product-info h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 0.6rem; font-weight: 700; }
+    .product-info p { font-size: 0.85rem; color: var(--text-medium); margin-bottom: 1rem; flex: 1; }
+    .product-specs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .product-specs span {
+      font-size: 0.72rem;
+      background: var(--bg-secondary);
+      color: var(--text-medium);
+      padding: 0.3rem 0.7rem;
+      border-radius: 50px;
+      border: 1px solid var(--border-light);
+    }
+    .product-price {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto; padding-top: 1rem;
+      border-top: 1px solid var(--border-light);
+      gap: 0.5rem;
+    }
+    .price-tag { font-size: 1.3rem; font-weight: 800; color: var(--accent-dark); }
+    .price-tag span { font-size: 0.75rem; color: var(--text-light); font-weight: 400; }
+    .product-btn {
+      background: var(--navy); color: #fff;
+      padding: 0.55rem 1.2rem; border-radius: 50px;
+      font-size: 0.8rem; font-weight: 600;
+      transition: var(--transition); border: none; cursor: pointer;
+      white-space: nowrap;
+    }
+    .product-btn:hover { background: var(--accent); transform: translateX(3px); }
+
+    /* ============================================================
+       SERVICE DETAIL PAGE
+       ============================================================ */
+    .service-detail-hero {
+      position: relative;
+      padding: 60px 0 80px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: #fff;
+      overflow: hidden;
+    }
+    .service-detail-hero:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .service-detail-hero .container { position: relative; z-index: 2; }
+    .service-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 3rem;
+      min-width: 0;
+    }
+    .service-detail-grid > * { min-width: 0; }
+
+    .service-detail-content {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      min-width: 0;
+      overflow: hidden;
+    }
+    .service-detail-content p,
+    .service-detail-content h2,
+    .service-detail-content h3 { word-wrap: break-word; overflow-wrap: break-word; }
+    .service-detail-content h2 { color: var(--navy); margin-bottom: 1rem; font-size: 1.6rem; }
+    .service-detail-content h3 {
+      color: var(--navy);
+      margin: 2rem 0 1rem;
+      font-size: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .service-detail-content h3 i { color: var(--accent); font-size: 1.1rem; }
+    .service-detail-content p { color: var(--text-medium); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.8; }
+
+    .service-detail-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 1.5rem;
+      background: var(--bg-secondary);
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 100%;
+    }
+    .service-detail-image div {
+      font-size: clamp(4rem, 12vw, 6rem) !important;
+      line-height: 1;
+    }
+
+    .included-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+    .included-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      padding: 0.8rem;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-xs);
+      font-size: 0.9rem;
+      color: var(--text-medium);
+      transition: var(--transition);
+    }
+    .included-list li:hover { background: var(--accent-light); transform: translateX(5px); }
+    .included-list li i { color: var(--green); font-size: 0.95rem; margin-top: 3px; flex-shrink: 0; }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+      position: sticky;
+      top: calc(var(--topbar-height) + var(--header-height) + 20px);
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card h3 {
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sidebar-card h3 i { color: var(--accent); }
+
+    .price-highlight {
+      text-align: center;
+      padding: 1.5rem 0;
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.5rem;
+    }
+    .price-highlight .label {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    .price-highlight .amount {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent-dark);
+      line-height: 1;
+    }
+    .price-highlight .amount span { font-size: 0.9rem; font-weight: 400; color: var(--text-light); }
+
+    .sidebar-features { margin-bottom: 1.5rem; }
+    .sidebar-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.6rem 0;
+      font-size: 0.88rem;
+      color: var(--text-medium);
+      border-bottom: 1px dashed var(--border-light);
+    }
+    .sidebar-features li:last-child { border-bottom: none; }
+    .sidebar-features li i { color: var(--accent); width: 18px; text-align: center; flex-shrink: 0; }
+
+    .charge-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.5rem 0;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      max-width: 100%;
+    }
+    .charge-table-wrap::-webkit-scrollbar { height: 6px; }
+    .charge-table-wrap::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+    .charge-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      min-width: 420px;
+    }
+    .charge-table th {
+      background: var(--navy);
+      color: #fff;
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .charge-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.9rem;
+      color: var(--text-medium);
+    }
+    .charge-table tr:last-child td { border-bottom: none; }
+    .charge-table tr:hover td { background: var(--bg-secondary); }
+    .charge-table .price-col { color: var(--accent-dark); font-weight: 700; font-size: 1rem; }
+
+    .steps-list { counter-reset: step; margin: 1.5rem 0; }
+    .steps-list li {
+      counter-increment: step;
+      position: relative;
+      padding: 0.8rem 0 0.8rem 3rem;
+      color: var(--text-medium);
+      font-size: 0.92rem;
+      border-bottom: 1px dashed var(--border-light);
+    }
+    .steps-list li:last-child { border-bottom: none; }
+    .steps-list li:before {
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 0.7rem;
+      width: 32px; height: 32px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.8rem;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .faq-item:hover { border-color: var(--accent-light); }
+    .faq-question {
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--navy);
+      background: var(--bg-secondary);
+      transition: var(--transition);
+      gap: 1rem;
+    }
+    .faq-question:hover { background: var(--accent-light); }
+    .faq-question i { color: var(--accent); transition: var(--transition); font-size: 0.85rem; flex-shrink: 0; }
+    .faq-item.open .faq-question i { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 1.2rem;
+      color: var(--text-medium);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 1rem 1.2rem 1.2rem; }
+
+    .related-services {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border-light);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .related-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .related-card:hover {
+      background: var(--bg-card);
+      border-color: var(--accent-light);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    .related-card i { font-size: 1.8rem; color: var(--accent); margin-bottom: 0.8rem; display: inline-block; }
+    .related-card h4 { font-size: 0.95rem; color: var(--navy); margin-bottom: 0.3rem; }
+    .related-card p { font-size: 0.78rem; color: var(--text-light); }
+
+    /* ============================================================
+       ABOUT
+       ============================================================ */
+    .about-section { padding: 5rem 0; background: var(--bg-secondary); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-image { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+    .about-content h2 { margin-bottom: 1.5rem; color: var(--navy); }
+    .about-content p { color: var(--text-medium); margin-bottom: 1.2rem; font-size: 1rem; }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .stat-item {
+      text-align: center; padding: 1.2rem;
+      background: var(--bg-card);
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .stat-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .stat-item h3 { font-size: 1.8rem; color: var(--accent); font-weight: 800; }
+    .stat-item p { font-size: 0.85rem; color: var(--text-light); margin: 0; }
+
+    /* ============================================================
+       REVIEWS
+       ============================================================ */
+    .reviews-section { padding: 5rem 0; background: var(--bg-primary); }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .review-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+      transition: var(--transition);
+    }
+    .review-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+    .review-card .stars { color: #f5b342; margin-bottom: 1rem; font-size: 0.9rem; letter-spacing: 2px; }
+    .review-card p { color: var(--text-medium); font-style: italic; margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.7; }
+    .reviewer { display: flex; align-items: center; gap: 1rem; }
+    .reviewer-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; color: var(--accent-dark); font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .reviewer-info strong { display: block; font-size: 0.95rem; color: var(--text-dark); }
+    .reviewer-info span { font-size: 0.8rem; color: var(--text-light); }
+
+    /* ============================================================
+       WHY / PROCESS
+       ============================================================ */
+    .why-section { padding: 5rem 0; background: var(--bg-secondary); }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .why-item {
+      text-align: center; padding: 2rem 1rem;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .why-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+    .why-item i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; transition: var(--transition); display: inline-block; }
+    .why-item:hover i { transform: scale(1.15); }
+    .why-item h4 { font-size: 1rem; color: var(--text-dark); font-weight: 600; }
+
+    .process-section { padding: 5rem 0; background: var(--bg-primary); }
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .process-step { text-align: center; padding: 2rem 1rem; }
+    .process-number {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      color: #fff; font-size: 1.6rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 8px 20px rgba(214, 140, 69, 0.3);
+      transition: var(--transition);
+    }
+    .process-step:hover .process-number { transform: scale(1.1) rotate(-8deg); }
+    .process-step h4 { color: var(--navy); margin-bottom: 0.6rem; font-size: 1.05rem; }
+    .process-step p { font-size: 0.85rem; color: var(--text-medium); }
+
+    /* ============================================================
+       CONTACT
+       ============================================================ */
+    .contact-section { padding: 5rem 0; background: var(--bg-primary); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+    .contact-form-wrapper {
+      background: var(--bg-card);
+      padding: 2.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-light);
+    }
+    .contact-form-wrapper h3 { margin-bottom: 1.5rem; color: var(--navy); }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-dark); font-size: 0.9rem; }
+    .form-group label .required { color: #e74c3c; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      background: var(--bg-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      color: var(--text-dark);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(214, 140, 69, 0.1);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .map-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 320px;
+      margin-bottom: 1.5rem;
+    }
+    .map-container iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .contact-info-card {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-light);
+    }
+    .contact-info-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
+    .contact-info-item:last-child { margin-bottom: 0; }
+    .contact-info-item i {
+      font-size: 1.2rem;
+      color: var(--accent);
+      width: 24px;
+      text-align: center;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .contact-info-item p { color: var(--text-medium); font-size: 0.9rem; margin: 0; }
+    .contact-info-item strong { display: block; color: var(--text-dark); font-size: 0.95rem; margin-bottom: 2px; }
+
+    /* ============================================================
+       PAGE BANNER
+       ============================================================ */
+    .page-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 12s ease infinite;
+      padding: 60px 0;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-banner:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-banner h1 { position: relative; z-index: 2; }
+    .page-banner p { position: relative; z-index: 2; color: rgba(255,255,255,0.8); margin-top: 0.8rem; max-width: 620px; margin-left: auto; margin-right: auto; }
+    .breadcrumb { position: relative; z-index: 2; margin-top: 1.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+    .breadcrumb a { cursor: pointer; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: var(--accent); }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer { background: var(--navy); color: #fff; padding: 4rem 0 2rem; position: relative; overflow: hidden; }
+    footer:before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(214, 140, 69, 0.05);
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; position: relative; z-index: 1; }
+    .footer-col h4 {
+      color: #fff;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    .footer-col h4:after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 30px; height: 2px;
+      background: var(--accent);
+    }
+    .footer-col p, .footer-col a {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      margin-bottom: 0.7rem;
+      display: block;
+      transition: var(--transition);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+    .footer-col a:hover { color: var(--accent); padding-left: 5px; }
+    .footer-logo { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 1rem; }
+    .footer-logo span { color: var(--accent); }
+    .footer-social { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; transition: var(--transition); font-size: 0.9rem;
+      padding: 0;
+    }
+    .footer-social a:hover { background: var(--accent); transform: translateY(-3px); padding: 0; }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+    }
+
+    /* ============================================================
+       FLOATING BUTTONS
+       ============================================================ */
+    .floating-buttons {
+      position: fixed;
+      bottom: 24px; left: 24px;
+      display: flex; flex-direction: column; gap: 12px;
+      z-index: 999;
+    }
+    .float-btn {
+      width: 54px; height: 54px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.4rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      transition: var(--transition);
+      cursor: pointer; border: none;
+    }
+    .float-btn:hover { transform: scale(1.1) translateY(-3px); }
+    .float-whatsapp { background: #25D366; }
+    .float-call { background: var(--accent); }
+    .float-top {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 20px rgba(214, 140, 69, 0.4);
+      cursor: pointer; transition: var(--transition);
+      z-index: 999; border: none;
+      opacity: 0; pointer-events: none;
+    }
+    .float-top.visible { opacity: 1; pointer-events: all; }
+    .float-top:hover { transform: translateY(-5px); background: var(--accent-dark); }
+
+    /* ============================================================
+       RESPONSIVE — FIXED
+       ============================================================ */
+
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .service-detail-grid { grid-template-columns: 1fr; }
+      .sidebar-card { position: static; }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --topbar-height: 30px;
+        --header-height: 62px;
+      }
+
+      .top-bar { font-size: 0.7rem; }
+      .top-bar-inner { justify-content: center; text-align: center; }
+      .top-bar-inner > div:last-child { display: none; }
+      .top-bar .divider { margin: 0 0.5rem; }
+
+      .logo { font-size: 1.25rem; gap: 0.25rem; letter-spacing: -0.3px; }
+      .header-inner { gap: 0.5rem; }
+
+      .nav-links {
+        position: fixed;
+        top: 0; right: -100%;
+        width: 75%; height: 100vh;
+        background: #fff;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        z-index: 1004;
+        padding-top: 60px;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { color: var(--text-dark) !important; font-size: 1.1rem; }
+      .mobile-toggle { display: block; }
+
+      .hero { min-height: 75vh; padding: 40px 0; }
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn { width: 100%; max-width: 300px; }
+      .hero-stats { gap: 1.5rem; margin-top: 2.5rem; }
+      .hero-stat h3 { font-size: 1.6rem; }
+      .hero-stat p { font-size: 0.75rem; }
+
+      .about-stats { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      .floating-buttons { bottom: 16px; left: 16px; }
+      .float-btn { width: 46px; height: 46px; font-size: 1.2rem; }
+      .float-top { bottom: 16px; right: 16px; width: 42px; height: 42px; }
+
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form-wrapper { padding: 1.5rem; }
+
+      .service-detail-grid { grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+      .service-detail-content { padding: 1.5rem 1.2rem; }
+      .service-detail-content h2 { font-size: 1.3rem; }
+      .service-detail-content h3 { font-size: 1.05rem; margin: 1.5rem 0 0.8rem; }
+      .service-detail-content p { font-size: 0.9rem; }
+
+      .included-list { grid-template-columns: 1fr; gap: 0.6rem; }
+      .included-list li { padding: 0.7rem; font-size: 0.85rem; }
+
+      .service-detail-image { height: 180px; margin-bottom: 1rem; }
+      .service-detail-image div { font-size: 4rem !important; }
+
+      .service-detail-hero { padding: 50px 0 60px; }
+      .service-detail-hero h1 { font-size: 1.5rem !important; }
+      .service-detail-hero p { font-size: 0.85rem; }
+      .service-detail-hero .breadcrumb { font-size: 0.75rem; }
+
+      .sidebar-card { padding: 1.5rem 1.2rem; }
+      .price-highlight .amount { font-size: 1.8rem; }
+
+      .charge-table th, .charge-table td { padding: 0.7rem; font-size: 0.8rem; }
+      .charge-table { min-width: 400px; }
+
+      .steps-list li { padding: 0.7rem 0 0.7rem 2.6rem; font-size: 0.85rem; }
+      .steps-list li:before { width: 26px; height: 26px; font-size: 0.75rem; }
+
+      .faq-question { padding: 0.9rem 1rem; font-size: 0.85rem; }
+      .faq-answer { font-size: 0.82rem; }
+
+      .related-services { margin-top: 2.5rem; padding-top: 2rem; }
+      .related-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .related-card { padding: 1.2rem; }
+
+      .page-banner { padding: 50px 0; }
+    }
+
+    @media (max-width: 480px) {
+      :root {
+        --topbar-height: 28px;
+        --header-height: 58px;
+      }
+
+      .container { padding: 0 14px; }
+      .top-bar { font-size: 0.68rem; }
+      .logo { font-size: 1.1rem; gap: 0.2rem; letter-spacing: -0.2px; }
+      .mobile-toggle { font-size: 1.25rem; padding: 5px; }
+
+      .hero { padding: 30px 0; }
+      .hero-content h1 { font-size: 1.7rem; }
+      .hero-badge { font-size: 0.75rem; padding: 0.4rem 1rem; }
+      .hero-content p { font-size: 0.9rem; margin-bottom: 1.8rem; }
+
+      .section-title { margin-bottom: 1.5rem; }
+      .section-title h2 { font-size: 1.4rem; }
+      .section-title p { font-size: 0.85rem; }
+
+      .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .service-card { padding: 1.5rem 1rem; }
+      .service-card i { font-size: 2rem; }
+      .service-card h3 { font-size: 0.95rem; }
+
+      .product-grid { grid-template-columns: 1fr; }
+      .review-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr 1fr; }
+
+      .page-banner { padding: 40px 0; }
+      .page-banner h1 { font-size: 1.4rem !important; }
+      .page-banner p { font-size: 0.85rem; }
+
+      .footer-bottom { font-size: 0.7rem; }
+
+      .service-detail-content { padding: 1.2rem 1rem; }
+      .service-detail-image { height: 150px; }
+      .service-detail-image div { font-size: 3rem !important; }
+      .sidebar-card { padding: 1.2rem 1rem; }
+      .price-highlight .amount { font-size: 1.5rem; }
+      .charge-table { min-width: 340px; }
+      .charge-table th, .charge-table td { padding: 0.6rem 0.5rem; font-size: 0.75rem; }
+    }
+
+    @media (max-width: 380px) {
+      .logo { font-size: 1rem; gap: 0.15rem; }
+      .mobile-toggle { font-size: 1.15rem; padding: 4px; }
+      .container { padding: 0 12px; }
+      .top-bar { font-size: 0.65rem; }
+    }
+
+    /* ============================================================
+       GLOBAL SAFETY
+       ============================================================ */
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    *, *::before, *::after {
+      min-width: 0;
+    }
+    img, svg, video, iframe {
+      max-width: 100%;
+    }
+    .container {
+      width: 100%;
+      overflow-x: clip;
+    }
+    main {
+      overflow-x: clip;
+    }
+
+    .text-center { text-align: center; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
+    ::selection { background: var(--accent); color: #fff; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container top-bar-inner">
+    <div>
+      <i class="fas fa-map-pin"></i> Kudasan, Gandhinagar, Gujarat
+      <span class="divider">|</span>
+      <i class="fas fa-clock"></i> Mon–Sat: 10 AM – 8 PM
+    </div>
+    <div>
+      <i class="fas fa-phone"></i> <a href="tel:+919408282463">94082 82463</a>
+      <span class="divider">|</span>
+      <i class="fas fa-envelope"></i> <a href="mailto:veeruinfotech408@gmail.com">veeruinfotech408@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="container header-inner">
+    <a class="logo" data-page="home">
+      <span class="logo-veeru">VEERU</span> <span class="logo-info">INFOTECH</span>
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a data-page="home" class="active">Home</a></li>
+        <li><a data-page="about">About</a></li>
+        <li><a data-page="products">Products</a></li>
+        <li><a data-page="services">Services</a></li>
+        <li><a data-page="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">VEERU <span>INFOTECH</span></div>
+        <p>Your Technology, Our Priority. Sales, service, repairing & upgrade for computers, laptops, CCTV cameras and more.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/919408282463" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a data-page="home">Home</a>
+        <a data-page="about">About Us</a>
+        <a data-page="products">Products</a>
+        <a data-page="services">Services</a>
+        <a data-page="contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <a data-service="ac">AC Service</a>
+        <a data-service="tv">TV Repair</a>
+        <a data-service="cctv">CCTV Installation</a>
+        <a data-service="laptop">Laptop Repair</a>
+        <a data-service="fridge">Refrigerator Repair</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <p><i class="fas fa-map-pin" style="margin-right: 8px; color: var(--accent);"></i> First Floor, Pramukh Anand Orbit Mall, 191, Reliance Cross Rd, Kudasan, Gandhinagar, Gujarat 382419</p>
+        <p><i class="fas fa-phone" style="margin-right: 8px; color: var(--accent);"></i> 94082 82463 / 87808 43021</p>
+        <p><i class="fas fa-envelope" style="margin-right: 8px; color: var(--accent);"></i> veeruinfotech408@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Veeru Infotech. All rights reserved. | Designed for trust & service.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-buttons">
+  <a href="https://wa.me/919408282463" target="_blank" class="float-btn float-whatsapp" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="tel:+919408282463" class="float-btn float-call" aria-label="Call">
+    <i class="fas fa-phone-alt"></i>
+  </a>
+</div>
+<button class="float-top" id="floatTop" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+  // ============================================================
+  // SERVICE DATA
+  // ============================================================
+  const serviceData = {
+    ac: {
+      title: 'AC Service & Repair',
+      icon: 'fa-snowflake',
+      subtitle: 'Installation, gas refill, maintenance – all brands.',
+      image: '❄️',
+      shortDesc: 'Professional AC service for split, window, and cassette units. Our certified technicians handle gas refilling, deep cleaning, installation, and complete repair of all brands including Daikin, LG, Samsung, Voltas, Blue Star, Hitachi, and more.',
+      included: ['Complete AC diagnosis & inspection','Gas pressure check & refilling','Indoor & outdoor unit deep cleaning','Filter cleaning & sanitization','Drain pipe cleaning & unclogging','Electrical component check','Split & window AC installation','Remote & PCB troubleshooting','Compressor testing & repair','30-day service warranty'],
+      priceLabel: 'Starting from', priceValue: '₹499', priceUnit: '/ visit',
+      quickFeatures: ['Free diagnosis with paid visit','All brands supported','Same-day service available','Genuine spare parts only','Certified technicians'],
+      chargeTable: [
+        { service: 'Basic Visit & Diagnosis', desc: 'Technician visit with full AC inspection', price: '₹250' },
+        { service: 'AC Deep Cleaning (Split)', desc: 'Indoor & outdoor unit jet cleaning', price: '₹599' },
+        { service: 'AC Deep Cleaning (Window)', desc: 'Full service with filter & coil cleaning', price: '₹499' },
+        { service: 'Gas Refill (R22)', desc: 'R22 gas top-up with leak test', price: '₹1,800' },
+        { service: 'Gas Refill (R32/R410a)', desc: 'Eco-friendly gas top-up with leak test', price: '₹2,200' },
+        { service: 'AC Installation (Split)', desc: 'Includes copper piping up to 3m', price: '₹1,499' },
+        { service: 'AC Uninstallation', desc: 'Safe removal with gas recovery', price: '₹799' },
+        { service: 'PCB Repair', desc: 'Circuit board repair or replacement', price: '₹1,200' },
+        { service: 'Compressor Repair', desc: 'Compressor replacement (part extra)', price: '₹1,500' },
+        { service: 'Annual Maintenance Contract', desc: '4 services/year + priority support', price: '₹2,999' }
+      ],
+      steps: ['Call or WhatsApp us to book your AC service','We confirm the appointment within 10 minutes','Certified technician arrives on time with tools','Full diagnosis done, quote shared before work','Service completed & tested in front of you','Payment accepted via cash / UPI / card'],
+      faqs: [
+        { q: 'How often should I service my AC?', a: 'We recommend servicing your AC at least twice a year — once before summer and once after the monsoon season.' },
+        { q: 'Do you provide a warranty on repairs?', a: 'Yes! All our repairs come with a 30-day service warranty on workmanship. Spare parts carry the manufacturer warranty.' },
+        { q: 'Which brands do you service?', a: 'We service all major brands including Daikin, LG, Samsung, Voltas, Blue Star, Hitachi, Carrier, Panasonic, and more.' },
+        { q: 'Is gas refilling covered in service?', a: 'No, gas refilling is charged separately as it is a material cost. The service charge covers cleaning and inspection only.' }
+      ],
+      related: ['tv', 'fridge', 'cctv']
+    },
+    tv: {
+      title: 'TV Repair',
+      icon: 'fa-tv',
+      subtitle: 'LED, LCD, Smart TV – screen issues, board repair.',
+      image: '📺',
+      shortDesc: 'Expert TV repair for LED, LCD, OLED, QLED, and Smart TVs. We handle screen replacement, backlight issues, motherboard repair, sound problems, and power supply faults across all major brands like Samsung, LG, Sony, Mi, OnePlus, and more.',
+      included: ['Free TV diagnosis at doorstep','LED / LCD panel repair','Screen replacement (if needed)','Backlight & LED strip repair','Motherboard & chip level repair','Power supply board repair','Sound & speaker troubleshooting','HDMI / USB port repair','Smart TV software reset & update','Wall mount installation','30-day service warranty'],
+      priceLabel: 'Starting from', priceValue: '₹399', priceUnit: '/ visit',
+      quickFeatures: ['Doorstep diagnosis','All brands & sizes','Chip level repair available','Genuine spare parts','Pick-up & drop for major repair'],
+      chargeTable: [
+        { service: 'Basic Visit & Diagnosis', desc: 'Technician visit with full TV inspection', price: '₹250' },
+        { service: 'LED TV Panel Repair', desc: 'Panel repair for lines, blur, or half display', price: '₹899' },
+        { service: 'Screen Replacement (32")', desc: 'New LED panel for 32-inch TV', price: '₹3,500' },
+        { service: 'Screen Replacement (43")', desc: 'New LED panel for 43-inch TV', price: '₹5,500' },
+        { service: 'Backlight Repair', desc: 'LED strip replacement with new strips', price: '₹1,200' },
+        { service: 'Motherboard Repair', desc: 'Circuit board repair for power/no display', price: '₹1,499' },
+        { service: 'Power Supply Repair', desc: 'SMPS board repair', price: '₹899' },
+        { service: 'Sound Issue Repair', desc: 'Speaker or audio IC replacement', price: '₹699' },
+        { service: 'HDMI / USB Port Repair', desc: 'Port replacement or repair', price: '₹599' },
+        { service: 'Wall Mount Installation', desc: 'Includes standard bracket (up to 55")', price: '₹499' }
+      ],
+      steps: ['Book a TV repair slot online or via call','Share the TV issue & model over WhatsApp','Technician arrives with diagnostic tools','Free diagnosis done, quote shared upfront','Repair completed (same-day for minor issues)','30-day warranty card provided'],
+      faqs: [
+        { q: 'Can you repair a TV with a cracked screen?', a: 'Yes! We replace the entire panel. The cost depends on TV size and panel availability. We will give you a quote before starting.' },
+        { q: 'Do you repair Smart TVs?', a: 'Absolutely. We repair all Smart TVs including Android TV, WebOS, Tizen, and Google TV platforms.' },
+        { q: 'How long does a typical TV repair take?', a: 'Minor repairs are done same-day. Major repairs like screen replacement take 2-3 days depending on parts availability.' },
+        { q: 'Do you offer pick-up and drop?', a: 'Yes, for major repairs we offer free pick-up and drop within Gandhinagar city limits.' }
+      ],
+      related: ['ac', 'laptop', 'chip']
+    },
+    fridge: {
+      title: 'Refrigerator Repair',
+      icon: 'fa-temperature-low',
+      subtitle: 'Cooling issues, compressor, thermostat – quick fix.',
+      image: '🧊',
+      shortDesc: 'Complete refrigerator repair services for single door, double door, side-by-side, and deep freezers. We fix cooling problems, gas leaks, compressor issues, thermostat faults, and defrost system failures across all brands.',
+      included: ['Free fridge diagnosis at home','Gas charging & leak repair','Compressor testing & replacement','Thermostat replacement','Defrost system repair','Cooling coil cleaning','Door seal replacement','PCB & relay repair','Deep freezer repair','30-day service warranty'],
+      priceLabel: 'Starting from', priceValue: '₹399', priceUnit: '/ visit',
+      quickFeatures: ['Home visit service','All brands & models','Genuine spare parts','Same-day minor repairs','Warranty on workmanship'],
+      chargeTable: [
+        { service: 'Basic Visit & Diagnosis', desc: 'Technician visit with fridge inspection', price: '₹250' },
+        { service: 'Gas Charging (Single Door)', desc: 'R134a / R600a gas with leak seal', price: '₹1,500' },
+        { service: 'Gas Charging (Double Door)', desc: 'Includes filter drier replacement', price: '₹1,800' },
+        { service: 'Compressor Replacement', desc: 'New compressor (part extra)', price: '₹1,999' },
+        { service: 'Thermostat Replacement', desc: 'New thermostat with calibration', price: '₹799' },
+        { service: 'Defrost Timer Repair', desc: 'Timer / defrost system repair', price: '₹699' },
+        { service: 'Door Seal Replacement', desc: 'New magnetic gasket (per door)', price: '₹899' },
+        { service: 'PCB Repair', desc: 'Control board repair or replacement', price: '₹1,200' },
+        { service: 'Cooling Coil Cleaning', desc: 'Deep cleaning of condenser coils', price: '₹499' }
+      ],
+      steps: ['Book your fridge repair online or via call','Share the issue — cooling, noise, or gas leak','Technician arrives with diagnostic kit','Free diagnosis + transparent quote','Repair done on the spot (if parts available)','Warranty card provided after service'],
+      faqs: [
+        { q: 'My fridge is not cooling. What could be wrong?', a: 'Common causes include gas leakage, faulty thermostat, blocked capillary, or compressor failure. We diagnose all of these in our free visit.' },
+        { q: 'How long does gas charging take?', a: 'Gas charging with leak repair typically takes 1-2 hours at your home. For major leaks, we may need to take the fridge to our workshop.' },
+        { q: 'Do you repair deep freezers?', a: 'Yes, we repair all types of deep freezers including chest freezers and upright freezers.' },
+        { q: 'Is the compressor covered under warranty?', a: 'The new compressor comes with a manufacturer warranty (usually 1 year). Our workmanship warranty is 30 days.' }
+      ],
+      related: ['ac', 'tv', 'chimney']
+    },
+    cctv: {
+      title: 'CCTV Installation',
+      icon: 'fa-video',
+      subtitle: 'Site survey, wiring, DVR setup, and mobile viewing.',
+      image: '📹',
+      shortDesc: 'Complete CCTV installation and setup for homes, shops, offices, and factories. We provide site survey, camera installation, DVR/NVR configuration, wiring, and mobile viewing setup. Brands: Hikvision, Dahua, CP Plus, Godrej.',
+      included: ['Free site survey & consultation','Camera installation (dome/bullet)','DVR / NVR setup & configuration','Cable wiring & conduit work','Power supply installation','Mobile app setup (iOS/Android)','Remote viewing configuration','Hard disk installation','Night vision testing','1-year installation warranty'],
+      priceLabel: 'Starting from', priceValue: '₹500', priceUnit: '/ camera',
+      quickFeatures: ['Free site survey','All brands available','Mobile viewing setup','Neat & hidden wiring','AMC plans available'],
+      chargeTable: [
+        { service: 'Site Survey & Consultation', desc: 'Free visit to plan camera positions', price: 'FREE' },
+        { service: 'Camera Installation (per camera)', desc: 'Includes wiring up to 20m', price: '₹500' },
+        { service: 'DVR Setup & Configuration', desc: '4/8/16 channel DVR setup', price: '₹800' },
+        { service: 'NVR Setup & Configuration', desc: 'IP camera NVR setup', price: '₹1,200' },
+        { service: 'Mobile App Setup', desc: 'Remote viewing on iOS/Android', price: '₹300' },
+        { service: 'Extra Cable (per meter)', desc: '3+1 CCTV cable with conduit', price: '₹25' },
+        { service: 'Hard Disk Installation', desc: 'Up to 4TB surveillance HDD', price: '₹400' },
+        { service: 'Power Supply Setup', desc: 'SMPS + distribution box', price: '₹600' },
+        { service: 'CCTV AMC (4 cameras)', desc: 'Yearly maintenance & support', price: '₹2,999' },
+        { service: 'CCTV AMC (8 cameras)', desc: 'Yearly maintenance & support', price: '₹4,999' }
+      ],
+      steps: ['Book a free site survey','Our expert visits & recommends camera positions','You approve the quote & camera models','Installation scheduled at your convenience','Complete setup with mobile viewing','1-year installation warranty provided'],
+      faqs: [
+        { q: 'How many cameras do I need for my shop?', a: 'For a small shop, 4 cameras are usually enough. For larger spaces, 8-16 cameras. We provide a free site survey to recommend the right count.' },
+        { q: 'Can I view cameras on my phone?', a: 'Yes! We configure mobile viewing on your iOS or Android phone so you can watch live and recorded footage from anywhere.' },
+        { q: 'What brands do you install?', a: 'We install Hikvision, Dahua, CP Plus, Godrej, and other leading brands. You can choose based on your budget and requirements.' },
+        { q: 'Do you provide maintenance?', a: 'Yes, we offer AMC (Annual Maintenance Contracts) starting at ₹2,999/year for up to 4 cameras.' }
+      ],
+      related: ['laptop', 'tv', 'ac']
+    },
+    laptop: {
+      title: 'Laptop & PC Repair',
+      icon: 'fa-laptop-medical',
+      subtitle: 'Hardware, software, virus removal, upgrade.',
+      image: '💻',
+      shortDesc: 'Complete laptop and desktop repair services — hardware issues, software problems, virus removal, OS installation, RAM/SSD upgrades, screen replacement, keyboard repair, and more. All brands: Dell, HP, Lenovo, Asus, Acer, Apple.',
+      included: ['Free diagnosis at shop','Hardware repair (motherboard, screen)','Software & OS installation','Virus & malware removal','RAM & SSD upgrade','Keyboard replacement','Battery replacement','Screen replacement','Data recovery (basic)','30-day service warranty'],
+      priceLabel: 'Starting from', priceValue: '₹499', priceUnit: '/ service',
+      quickFeatures: ['Free diagnosis at shop','All brands supported','Same-day minor repairs','Genuine parts only','Data safety guaranteed'],
+      chargeTable: [
+        { service: 'Basic Diagnosis', desc: 'Complete hardware + software check', price: 'FREE' },
+        { service: 'OS Installation (Windows)', desc: 'Windows 10/11 with drivers', price: '₹499' },
+        { service: 'Software Installation', desc: 'MS Office, antivirus, utilities', price: '₹299' },
+        { service: 'Virus Removal', desc: 'Deep scan + malware cleanup', price: '₹399' },
+        { service: 'RAM Upgrade (8GB DDR4)', desc: 'New RAM + installation', price: '₹2,499' },
+        { service: 'SSD Upgrade (256GB)', desc: 'New SSD + OS migration', price: '₹2,999' },
+        { service: 'SSD Upgrade (512GB)', desc: 'New SSD + OS migration', price: '₹4,499' },
+        { service: 'Battery Replacement', desc: 'New battery (brand dependent)', price: '₹2,500' },
+        { service: 'Keyboard Replacement', desc: 'New keyboard (brand dependent)', price: '₹1,500' },
+        { service: 'Screen Replacement', desc: 'New screen (size & brand dependent)', price: '₹3,500' },
+        { service: 'Motherboard Repair', desc: 'Chip level repair for dead board', price: '₹1,999' },
+        { service: 'Data Recovery', desc: 'Basic file recovery from HDD/SSD', price: '₹1,499' }
+      ],
+      steps: ['Bring your laptop to our shop or book pickup','Free diagnosis done within 30 minutes','Detailed quote shared before repair','Approval taken — repair starts','Testing & quality check','Ready for pickup or home delivery'],
+      faqs: [
+        { q: 'How long will my laptop repair take?', a: 'Minor repairs like OS installation or virus removal are done same-day. Hardware repairs take 1-3 days depending on parts availability.' },
+        { q: 'Is my data safe during repair?', a: 'Yes! We always back up data before major repairs. Our technicians are trained to handle data safely and securely.' },
+        { q: 'Do you repair Apple MacBooks?', a: 'We repair MacBooks (Air & Pro) for hardware issues like battery, screen, and keyboard. For complex chip-level Mac repairs, we may refer you to a specialist.' },
+        { q: 'Do you provide pickup and drop?', a: 'Yes, we offer free pickup and drop within Gandhinagar city limits for laptop repairs.' }
+      ],
+      related: ['chip', 'printer', 'cctv']
+    },
+    chip: {
+      title: 'Chip Level Repair',
+      icon: 'fa-microchip',
+      subtitle: 'Advanced repair for dead boards and power issues.',
+      image: '🔬',
+      shortDesc: 'Advanced chip-level repair for motherboards of laptops, desktops, TVs, and other electronics. We handle dead boards, power issues, no display, short circuits, and BIOS problems using professional BGA rework stations.',
+      included: ['Free board diagnosis','BGA rework & reballing','Power IC replacement','BIOS chip programming','Short circuit repair','Capacitor & resistor replacement','USB / HDMI port repair','Liquid damage recovery','60-day service warranty','Only charged if repaired'],
+      priceLabel: 'Starting from', priceValue: '₹1,499', priceUnit: '/ board',
+      quickFeatures: ['Advanced BGA station','No fix, no fee guarantee','60-day warranty','All brands supported','Liquid damage experts'],
+      chargeTable: [
+        { service: 'Board Diagnosis', desc: 'Complete chip-level diagnosis with report', price: 'FREE' },
+        { service: 'Power IC Replacement', desc: 'MOSFET or power IC replacement', price: '₹1,499' },
+        { service: 'BIOS Programming', desc: 'BIOS chip reprogramming or replacement', price: '₹1,200' },
+        { service: 'BGA Rework', desc: 'GPU or chipset reballing with BGA station', price: '₹2,999' },
+        { service: 'Short Circuit Repair', desc: 'Locate & fix short on board', price: '₹999' },
+        { service: 'Capacitor / Resistor', desc: 'Per component replacement', price: '₹499' },
+        { service: 'USB / HDMI Port', desc: 'Port replacement on board', price: '₹899' },
+        { service: 'Liquid Damage Treatment', desc: 'Ultrasonic cleaning + component repair', price: '₹1,999' },
+        { service: 'CPU Socket Repair', desc: 'Socket reflow or replacement', price: '₹2,500' },
+        { service: 'Data Recovery from Dead Board', desc: 'Extract data from non-booting board', price: '₹1,999' }
+      ],
+      steps: ['Bring or courier the faulty device','Free chip-level diagnosis with report','We tell you if repair is possible','You approve the quote — repair begins','Advanced BGA rework done in lab','Post-repair testing + 60-day warranty'],
+      faqs: [
+        { q: 'What is chip level repair?', a: 'Chip level repair involves fixing components directly on the motherboard (like ICs, chips, capacitors) instead of replacing the whole board. It saves you 60-70% of the cost of a new board.' },
+        { q: 'Do you charge if repair fails?', a: 'No! Our policy is "No Fix, No Fee". If we cannot repair your board, you pay nothing for our service.' },
+        { q: 'Is chip level repair reliable?', a: 'Yes, when done by experienced technicians with proper equipment like BGA rework stations. We provide a 60-day warranty on all chip level repairs.' },
+        { q: 'How long does chip level repair take?', a: 'Typically 2-5 days depending on the complexity of the fault and component availability.' }
+      ],
+      related: ['laptop', 'tv', 'printer']
+    },
+    printer: {
+      title: 'Printer Service',
+      icon: 'fa-print',
+      subtitle: 'Cartridge refill, repair & maintenance.',
+      image: '🖨️',
+      shortDesc: 'Complete printer repair and maintenance for inkjet, laser, and all-in-one printers. We handle cartridge refills, roller repair, print head cleaning, and network setup. Brands: HP, Canon, Epson, Brother, Xerox.',
+      included: ['Free printer diagnosis','Cartridge refill (color & B&W)','Print head cleaning & repair','Roller & pickup assembly repair','Paper jam fixes','WiFi & network setup','Driver installation','Fuser assembly repair','Scanner repair (AIO printers)','30-day service warranty'],
+      priceLabel: 'Starting from', priceValue: '₹299', priceUnit: '/ service',
+      quickFeatures: ['Doorstep service','All brands supported','Genuine cartridge refills','Same-day service','AMC available'],
+      chargeTable: [
+        { service: 'Basic Visit & Diagnosis', desc: 'Technician visit with printer inspection', price: '₹250' },
+        { service: 'Cartridge Refill (Black)', desc: 'Inkjet black cartridge refill', price: '₹299' },
+        { service: 'Cartridge Refill (Color)', desc: 'Inkjet color cartridge refill (per color)', price: '₹399' },
+        { service: 'Toner Refill (Laser)', desc: 'Laser printer toner refill', price: '₹599' },
+        { service: 'Print Head Cleaning', desc: 'Deep cleaning of clogged print head', price: '₹499' },
+        { service: 'Roller Replacement', desc: 'Paper pickup roller replacement', price: '₹699' },
+        { service: 'Fuser Assembly Repair', desc: 'Fuser unit repair or replacement', price: '₹1,499' },
+        { service: 'WiFi Setup', desc: 'Wireless printing configuration', price: '₹399' },
+        { service: 'Driver Installation', desc: 'Printer driver setup on PC/laptop', price: '₹199' },
+        { service: 'Printer AMC', desc: 'Yearly maintenance with 4 visits', price: '₹2,499' }
+      ],
+      steps: ['Book printer service online or via call','Tell us the issue — print quality, jam, etc.','Technician arrives with tools & cartridges','Free diagnosis + transparent quote','Service done on the spot','Test print + warranty card provided'],
+      faqs: [
+        { q: 'How often should I refill my cartridge?', a: 'It depends on your print volume. For home users, once every 2-3 months. For offices with heavy printing, monthly refills are common.' },
+        { q: 'Do you use genuine ink for refills?', a: 'We use high-quality compatible ink that matches OEM quality. Genuine OEM cartridges are also available on request.' },
+        { q: 'Can you fix a printer that is not printing?', a: 'Yes! Common causes include clogged print head, empty cartridge, or driver issues. We diagnose and fix all of these.' },
+        { q: 'Do you offer AMC for offices?', a: 'Yes, we offer Annual Maintenance Contracts starting at ₹2,499/year with 4 scheduled maintenance visits.' }
+      ],
+      related: ['laptop', 'chip', 'cctv']
+    },
+    chimney: {
+      title: 'Chimney Repair',
+      icon: 'fa-wind',
+      subtitle: 'Cleaning, motor repair, and installation.',
+      image: '💨',
+      shortDesc: 'Complete chimney service for kitchen chimneys — deep cleaning, motor repair, filter replacement, and new installation. We service all brands including Faber, Elica, Hindware, Glen, and Bosch.',
+      included: ['Free chimney diagnosis','Deep cleaning of filters','Motor repair & replacement','Auto-clean function repair','Baffle filter cleaning','Oil collector cleaning','Duct cleaning','New chimney installation','Wall mount & ducting setup','30-day service warranty'],
+      priceLabel: 'Starting from', priceValue: '₹499', priceUnit: '/ service',
+      quickFeatures: ['Deep cleaning service','All brands supported','Motor repair available','Installation & uninstall','AMC plans'],
+      chargeTable: [
+        { service: 'Basic Visit & Diagnosis', desc: 'Technician visit with chimney inspection', price: '₹250' },
+        { service: 'Chimney Deep Cleaning', desc: 'Complete cleaning of filters, motor & body', price: '₹699' },
+        { service: 'Baffle Filter Cleaning', desc: 'Deep cleaning of baffle filters', price: '₹499' },
+        { service: 'Motor Repair', desc: 'Motor servicing or repair', price: '₹899' },
+        { service: 'Motor Replacement', desc: 'New motor (part extra)', price: '₹1,499' },
+        { service: 'Auto-Clean Repair', desc: 'Auto-clean mechanism repair', price: '₹799' },
+        { service: 'Chimney Installation', desc: 'New chimney installation with ducting', price: '₹1,299' },
+        { service: 'Chimney Uninstallation', desc: 'Safe removal of old chimney', price: '₹399' },
+        { service: 'Duct Cleaning', desc: 'Complete duct cleaning service', price: '₹599' },
+        { service: 'Chimney AMC', desc: 'Yearly maintenance with 3 visits', price: '₹1,999' }
+      ],
+      steps: ['Book chimney service online or via call','Share the brand & issue','Technician arrives with tools & cleaners','Free diagnosis + transparent quote','Deep cleaning or repair completed','Post-service demo + warranty card'],
+      faqs: [
+        { q: 'How often should I clean my chimney?', a: 'For daily cooking, we recommend deep cleaning every 3-4 months. For occasional cooking, once every 6 months is fine.' },
+        { q: 'My chimney motor is noisy. What should I do?', a: 'A noisy motor usually means it needs servicing or bearing replacement. Our technician can fix this on-site.' },
+        { q: 'Do you install new chimneys?', a: 'Yes! We install all types of kitchen chimneys with proper ducting, wall mounting, and electrical connection.' },
+        { q: 'What is an auto-clean chimney?', a: 'Auto-clean chimneys have a built-in heating system that burns off oil deposits. If this function stops working, we can repair it.' }
+      ],
+      related: ['fridge', 'ac', 'tv']
+    }
+  };
+
+  // ============================================================
+  // PAGE TEMPLATES
+  // ============================================================
+  const pages = {
+    home: `
+      <section class="hero">
+        <div class="hero-shape hero-shape-1"></div>
+        <div class="hero-shape hero-shape-2"></div>
+        <div class="hero-shape hero-shape-3"></div>
+        <div class="container hero-content">
+          <div class="hero-badge"><i class="fas fa-shield-alt"></i> Trusted by 1000+ Customers</div>
+          <h1>Expert Technicians at <span>Your Doorstep.</span></h1>
+          <p>Skilled technicians ready for any task, big or small. Sales, service, repairing & upgrade for computers, laptops, CCTV cameras and more.</p>
+          <div class="hero-buttons">
+            <a data-page="contact" class="btn">Book a Service <i class="fas fa-arrow-right"></i></a>
+            <a data-page="services" class="btn btn-outline-white">Explore Services</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><h3>1000+</h3><p>Happy Customers</p></div>
+            <div class="hero-stat"><h3>80+</h3><p>Expert Technicians</p></div>
+            <div class="hero-stat"><h3>10+</h3><p>Years Experience</p></div>
+            <div class="hero-stat"><h3>4.9★</h3><p>Average Rating</p></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ticker-wrap">
+        <div class="ticker">
+          <div class="ticker-item"><i class="fas fa-check-circle"></i> Genuine Products</div>
+          <div class="ticker-item"><i class="fas fa-tag"></i> Best Price Guarantee</div>
+          <div class="ticker-item"><i class="fas fa-handshake"></i> Trusted Service</div>
+          <div class="ticker-item"><i class="fas fa-smile"></i> Customer Satisfaction</div>
+          <div class="ticker-item"><i class="fas fa-truck"></i> Doorstep Service</div>
+          <div class="ticker-item"><i class="fas fa-shield-alt"></i> 30-Day Warranty</div>
+          <div class="ticker-item"><i class="fas fa-check-circle"></i> Genuine Products</div>
+          <div class="ticker-item"><i class="fas fa-tag"></i> Best Price Guarantee</div>
+          <div class="ticker-item"><i class="fas fa-handshake"></i> Trusted Service</div>
+          <div class="ticker-item"><i class="fas fa-smile"></i> Customer Satisfaction</div>
+          <div class="ticker-item"><i class="fas fa-truck"></i> Doorstep Service</div>
+          <div class="ticker-item"><i class="fas fa-shield-alt"></i> 30-Day Warranty</div>
+        </div>
+      </div>
+
+      <section class="services-section">
+        <div class="container">
+          <div class="section-title reveal">
+            <h2>Our Core Services</h2>
+            <p>Click any service to see detailed pricing, policies, and what's included.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card reveal" data-service="ac"><i class="fas fa-snowflake"></i><h3>AC Service & Repair</h3><p>Installation, gas refill, maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="tv"><i class="fas fa-tv"></i><h3>TV Repair</h3><p>LED, LCD, Smart TV repair.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="fridge"><i class="fas fa-temperature-low"></i><h3>Refrigerator Repair</h3><p>Cooling issues, compressor, gas.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="cctv"><i class="fas fa-video"></i><h3>CCTV Installation</h3><p>Site survey, wiring, DVR setup.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="laptop"><i class="fas fa-laptop-medical"></i><h3>Laptop & PC Repair</h3><p>Hardware, software, virus removal.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="chip"><i class="fas fa-microchip"></i><h3>Chip Level Repair</h3><p>Dead board & power issues.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="printer"><i class="fas fa-print"></i><h3>Printer Service</h3><p>Cartridge refill, repair & maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="chimney"><i class="fas fa-wind"></i><h3>Chimney Repair</h3><p>Cleaning, motor repair, installation.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="process-section">
+        <div class="container">
+          <div class="section-title reveal"><h2>How It Works</h2><p>Get your device fixed in 4 simple steps.</p></div>
+          <div class="process-grid">
+            <div class="process-step reveal"><div class="process-number">1</div><h4>Book Service</h4><p>Book online or call us — tell us the service and your preferred time.</p></div>
+            <div class="process-step reveal"><div class="process-number">2</div><h4>Confirmation</h4><p>We confirm your request within minutes and schedule a convenient time.</p></div>
+            <div class="process-step reveal"><div class="process-number">3</div><h4>Technician Arrives</h4><p>Our verified technician arrives on time with the right tools.</p></div>
+            <div class="process-step reveal"><div class="process-number">4</div><h4>Service Complete</h4><p>We ensure you're 100% satisfied before leaving. 30-day warranty included.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-image reveal"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='450' viewBox='0 0 600 450'%3E%3Crect width='600' height='450' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' fill='%23a28b72' text-anchor='middle' dy='.3em'%3E🔧 Expert Technicians%3C/text%3E%3C/svg%3E" alt="Veeru Infotech"></div>
+            <div class="about-content reveal">
+              <h2>About Veeru Infotech</h2>
+              <p>Veeru Infotech is a one-stop shop for all your computer, laptop, CCTV, and IT accessory needs. Based in Kudasan, Gandhinagar, we have built a reputation for honest pricing, expert technicians, and reliable after-sales support.</p>
+              <p>From assembling custom gaming PCs to installing complete CCTV networks, our team handles every job with precision and care.</p>
+              <p>Our mission is simple: <strong>"Your Technology, Our Priority."</strong></p>
+              <div class="about-stats">
+                <div class="stat-item"><h3>1000+</h3><p>Happy Customers</p></div>
+                <div class="stat-item"><h3>80+</h3><p>Expert Technicians</p></div>
+                <div class="stat-item"><h3>10+</h3><p>Years Experience</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="reviews-section">
+        <div class="container">
+          <div class="section-title reveal"><h2>What Our Customers Say</h2><p>Trusted by thousands of satisfied customers.</p></div>
+          <div class="review-grid">
+            <div class="review-card reveal"><div class="stars">★★★★★</div><p>"Very professional technician. Fixed my laptop motherboard in a day. Highly recommended for genuine service."</p><div class="reviewer"><div class="reviewer-avatar">R</div><div class="reviewer-info"><strong>Rajesh Patel</strong><span>Laptop Repair</span></div></div></div>
+            <div class="review-card reveal"><div class="stars">★★★★★</div><p>"Installed 8 CCTV cameras at my shop. Neat wiring and excellent after-sales support."</p><div class="reviewer"><div class="reviewer-avatar">M</div><div class="reviewer-info"><strong>Meera Shah</strong><span>CCTV Installation</span></div></div></div>
+            <div class="review-card reveal"><div class="stars">★★★★★</div><p>"Purchased a custom gaming PC. Great advice, best price, and they even helped with software setup."</p><div class="reviewer"><div class="reviewer-avatar">A</div><div class="reviewer-info"><strong>Amit Desai</strong><span>Gaming PC Build</span></div></div></div>
+          </div>
+        </div>
+      </section>
+    `,
+
+    about: `
+      <div class="page-banner">
+        <h1>About Veeru Infotech</h1>
+        <p>Your trusted technology partner in Gandhinagar since day one.</p>
+        <div class="breadcrumb"><a data-page="home">Home</a> / <span>About</span></div>
+      </div>
+      <section class="about-section">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-image reveal"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='450' viewBox='0 0 600 450'%3E%3Crect width='600' height='450' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' fill='%23a28b72' text-anchor='middle' dy='.3em'%3E🏢 Veeru Infotech%3C/text%3E%3C/svg%3E" alt="About"></div>
+            <div class="about-content reveal">
+              <h2>Who We Are</h2>
+              <p>Veeru Infotech is a one-stop shop for all your computer, laptop, CCTV, and IT accessory needs. Based in Kudasan, Gandhinagar, we have built a reputation for honest pricing, expert technicians, and reliable after-sales support.</p>
+              <p>From assembling custom gaming PCs to installing complete CCTV networks, our team handles every job with precision and care. We also provide wholesale and retail supply of printers, cartridges, WiFi devices, solar cameras, and more.</p>
+              <p>Our mission is simple: <strong>"Your Technology, Our Priority."</strong> We treat every customer like family and ensure your devices work flawlessly.</p>
+              <div class="about-stats">
+                <div class="stat-item"><h3>1000+</h3><p>Happy Customers</p></div>
+                <div class="stat-item"><h3>80+</h3><p>Expert Technicians</p></div>
+                <div class="stat-item"><h3>10+</h3><p>Years Experience</p></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 4rem; background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);" class="reveal">
+            <h3 style="margin-bottom: 1.5rem; color: var(--navy);">Our Journey & Values</h3>
+            <div class="why-grid">
+              <div class="why-item"><i class="fas fa-bullseye"></i><h4>Honest Pricing</h4><p style="font-size: 0.82rem; color: var(--text-light); margin-top: 0.5rem;">No hidden charges. Transparent quotes upfront.</p></div>
+              <div class="why-item"><i class="fas fa-users"></i><h4>Expert Team</h4><p style="font-size: 0.82rem; color: var(--text-light); margin-top: 0.5rem;">Certified technicians with years of experience.</p></div>
+              <div class="why-item"><i class="fas fa-rocket"></i><h4>Fast Service</h4><p style="font-size: 0.82rem; color: var(--text-light); margin-top: 0.5rem;">Same-day service for most common issues.</p></div>
+              <div class="why-item"><i class="fas fa-shield-alt"></i><h4>Warranty</h4><p style="font-size: 0.82rem; color: var(--text-light); margin-top: 0.5rem;">30-day service warranty on all repairs.</p></div>
+            </div>
+          </div>
+          <div style="margin-top: 4rem; background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius); box-shadow: var(--shadow-sm);" class="reveal">
+            <h3 style="margin-bottom: 1.5rem; color: var(--navy);">Visit Our Shop</h3>
+            <p style="color: var(--text-medium);"><i class="fas fa-map-pin" style="color: var(--accent); margin-right: 0.8rem;"></i> First Floor, Pramukh Anand Orbit Mall, 191, Reliance Cross Rd, Kudasan, Gandhinagar, Gujarat 382419</p>
+            <p style="color: var(--text-medium); margin-top: 0.8rem;"><i class="fas fa-phone" style="color: var(--accent); margin-right: 0.8rem;"></i> 94082 82463 / 87808 43021</p>
+            <p style="color: var(--text-medium); margin-top: 0.8rem;"><i class="fas fa-clock" style="color: var(--accent); margin-right: 0.8rem;"></i> Mon – Sat: 10:00 AM – 8:00 PM (Sunday Closed)</p>
+          </div>
+        </div>
+      </section>
+    `,
+
+    products: `
+      <div class="page-banner">
+        <h1>Our Products</h1>
+        <p>Latest laptops, computers, CCTV cameras, and accessories at best prices.</p>
+        <div class="breadcrumb"><a data-page="home">Home</a> / <span>Products</span></div>
+      </div>
+      <section class="products-section">
+        <div class="container">
+          <div class="section-title reveal"><h2>Featured Products</h2><p>Genuine products with warranty. Prices negotiable for bulk orders.</p></div>
+          <div class="product-grid">
+            <div class="product-card reveal">
+              <div class="product-image"><span class="product-badge new">New</span><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.35em'%3E❄️%3C/text%3E%3C/svg%3E" alt="AC"></div>
+              <div class="product-info">
+                <div class="product-category">Air Conditioner</div>
+                <h3>1.5 Ton Split AC</h3>
+                <p>5-Star Inverter AC with copper condenser, Wi-Fi enabled, and 4-way swing.</p>
+                <div class="product-specs"><span>1.5 Ton</span><span>5 Star</span><span>Inverter</span><span>Wi-Fi</span></div>
+                <div class="product-price"><div class="price-tag">₹32,999 <span>+ installation</span></div><button class="product-btn" data-page="contact">Enquire</button></div>
+              </div>
+            </div>
+            <div class="product-card reveal">
+              <div class="product-image"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.35em'%3E❄️%3C/text%3E%3C/svg%3E" alt="AC"></div>
+              <div class="product-info">
+                <div class="product-category">Air Conditioner</div>
+                <h3>1 Ton Split AC</h3>
+                <p>3-Star energy-efficient AC with anti-dust filter and turbo cooling.</p>
+                <div class="product-specs"><span>1 Ton</span><span>3 Star</span><span>Copper</span></div>
+                <div class="product-price"><div class="price-tag">₹26,499 <span>+ installation</span></div><button class="product-btn" data-page="contact">Enquire</button></div>
+              </div>
+            </div>
+            <div class="product-card reveal">
+              <div class="product-image"><span class="product-badge">Best Seller</span><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.35em'%3E💻%3C/text%3E%3C/svg%3E" alt="Laptop"></div>
+              <div class="product-info">
+                <div class="product-category">Laptop</div>
+                <h3>Dell / HP / Lenovo Core i5</h3>
+                <p>11th Gen Intel Core i5, 8GB RAM, 512GB SSD, 15.6" FHD display.</p>
+                <div class="product-specs"><span>i5 11th Gen</span><span>8GB RAM</span><span>512GB SSD</span></div>
+                <div class="product-price"><div class="price-tag">₹48,999 <span>onwards</span></div><button class="product-btn" data-page="contact">Enquire</button></div>
+              </div>
+            </div>
+            <div class="product-card reveal">
+              <div class="product-image"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.35em'%3E🖥️%3C/text%3E%3C/svg%3E" alt="PC"></div>
+              <div class="product-info">
+                <div class="product-category">Desktop PC</div>
+                <h3>Custom Gaming PC</h3>
+                <p>Ryzen 5 + RTX 3050, 16GB DDR4, 1TB NVMe SSD, RGB cabinet.</p>
+                <div class="product-specs"><span>Ryzen 5</span><span>RTX 3050</span><span>16GB RAM</span></div>
+                <div class="product-price"><div class="price-tag">₹64,999 <span>build cost</span></div><button class="product-btn" data-page="contact">Enquire</button></div>
+              </div>
+            </div>
+            <div class="product-card reveal">
+              <div class="product-image"><span class="product-badge new">Hot</span><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.35em'%3E📹%3C/text%3E%3C/svg%3E" alt="CCTV"></div>
+              <div class="product-info">
+                <div class="product-category">CCTV Camera</div>
+                <h3>Hikvision 2MP Dome Camera</h3>
+                <p>Full HD 1080p, night vision up to 30m, IP67 weatherproof.</p>
+                <div class="product-specs"><span>2MP</span><span>1080p</span><span>Night Vision</span></div>
+                <div class="product-price"><div class="price-tag">₹1,899 <span>per unit</span></div><button class="product-btn" data-page="contact">Enquire</button></div>
+              </div>
+            </div>
+            <div class="product-card reveal">
+              <div class="product-image"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.35em'%3E📡%3C/text%3E%3C/svg%3E" alt="Router"></div>
+              <div class="product-info">
+                <div class="product-category">Networking</div>
+                <h3>Dual-Band WiFi Router</h3>
+                <p>AC1200 Gigabit router with 4 antennas and parental controls.</p>
+                <div class="product-specs"><span>AC1200</span><span>Dual Band</span><span>4 Antenna</span></div>
+                <div class="product-price"><div class="price-tag">₹2,499 <span>per unit</span></div><button class="product-btn" data-page="contact">Enquire</button></div>
+              </div>
+            </div>
+            <div class="product-card reveal">
+              <div class="product-image"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.35em'%3E🖨️%3C/text%3E%3C/svg%3E" alt="Printer"></div>
+              <div class="product-info">
+                <div class="product-category">Printer</div>
+                <h3>HP All-in-One Printer</h3>
+                <p>Print, scan, copy with WiFi connectivity. Ideal for home & office.</p>
+                <div class="product-specs"><span>Print/Scan/Copy</span><span>WiFi</span></div>
+                <div class="product-price"><div class="price-tag">₹8,999 <span>onwards</span></div><button class="product-btn" data-page="contact">Enquire</button></div>
+              </div>
+            </div>
+            <div class="product-card reveal">
+              <div class="product-image"><span class="product-badge new">New</span><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='150'%3E%3Crect width='200' height='150' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-size='40' text-anchor='middle' dy='.35em'%3E🔋%3C/text%3E%3C/svg%3E" alt="Solar"></div>
+              <div class="product-info">
+                <div class="product-category">CCTV Camera</div>
+                <h3>4G Solar PTZ Camera</h3>
+                <p>Wireless 4G LTE camera with solar panel, 360° PTZ, two-way audio.</p>
+                <div class="product-specs"><span>4G LTE</span><span>Solar</span><span>360° PTZ</span></div>
+                <div class="product-price"><div class="price-tag">₹6,999 <span>per unit</span></div><button class="product-btn" data-page="contact">Enquire</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center" style="margin-top: 3rem;"><a data-page="contact" class="btn">Request Full Price List <i class="fas fa-download"></i></a></div>
+        </div>
+      </section>
+    `,
+
+    services: `
+      <div class="page-banner">
+        <h1>Our Services</h1>
+        <p>Professional technicians, doorstep service, and complete transparency in pricing.</p>
+        <div class="breadcrumb"><a data-page="home">Home</a> / <span>Services</span></div>
+      </div>
+      <section class="services-section">
+        <div class="container">
+          <div class="section-title reveal">
+            <h2>Click Any Service for Details</h2>
+            <p>Each service page includes pricing, what's included, and FAQs.</p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card reveal" data-service="ac"><i class="fas fa-snowflake"></i><h3>AC Service & Repair</h3><p>Installation, gas refill, maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="tv"><i class="fas fa-tv"></i><h3>TV Repair</h3><p>LED, LCD, Smart TV repair.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="fridge"><i class="fas fa-temperature-low"></i><h3>Refrigerator Repair</h3><p>Cooling issues, compressor, gas.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="cctv"><i class="fas fa-video"></i><h3>CCTV Installation</h3><p>Site survey, wiring, DVR setup.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="laptop"><i class="fas fa-laptop-medical"></i><h3>Laptop & PC Repair</h3><p>Hardware, software, virus removal.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="chip"><i class="fas fa-microchip"></i><h3>Chip Level Repair</h3><p>Dead board & power issues.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="printer"><i class="fas fa-print"></i><h3>Printer Service</h3><p>Cartridge refill, repair & maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="chimney"><i class="fas fa-wind"></i><h3>Chimney Repair</h3><p>Cleaning, motor repair, installation.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+          </div>
+        </div>
+      </section>
+    `,
+
+    contact: `
+      <div class="page-banner">
+        <h1>Contact Us</h1>
+        <p>Book a service or send an inquiry – we'll respond within minutes.</p>
+        <div class="breadcrumb"><a data-page="home">Home</a> / <span>Contact</span></div>
+      </div>
+      <section class="contact-section">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-form-wrapper reveal">
+              <h3>Send us a message</h3>
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" >
+                <input type="hidden" name="access_key" value="b1311ffb-e2b9-4870-973f-c052bc44ba6b">
+                <input type="hidden" name="subject" value="New Service Request - Veeru Infotech">
+                <div class="form-row">
+                  <div class="form-group"><label for="custName">Full Name <span class="required">*</span></label><input type="text" id="custName" name="Customer Name" required placeholder="e.g. Ramesh Patel"></div>
+                  <div class="form-group"><label for="custPhone">Phone <span class="required">*</span></label><input type="tel" id="custPhone" name="Phone" required placeholder="98765 43210"></div>
+                </div>
+                <div class="form-group"><label for="custAddress">Address <span class="required">*</span></label><input type="text" id="custAddress" name="Address" required placeholder="Area, City"></div>
+                <div class="form-group"><label for="inquiryType">Inquiry Type <span class="required">*</span></label><select id="inquiryType" name="Inquiry Type" required><option value="">-- Select --</option><option value="Service">Service</option><option value="Product Inquiry">Product Inquiry</option></select></div>
+                <div class="form-group" id="dynamicGroup" style="display: none;"><label for="dynamicSelect" id="dynamicLabel">Select</label><select id="dynamicSelect" name="Specific Service/Product"></select></div>
+                <div class="form-group"><label for="message">Other Description / Message</label><textarea id="message" name="Message" placeholder="Tell us more about your requirement..."></textarea></div>
+                <div class="text-center"><button type="submit" class="btn" style="width: 100%;">Send Request <i class="fas fa-paper-plane"></i></button></div>
+              </form>
+            </div>
+            <div class="contact-info-wrapper reveal">
+              <div class="map-container">
+                <iframe src="https://www.google.com/maps?q=Pramukh+Anand+Orbit+Mall,+Reliance+Cross+Rd,+Kudasan,+Gandhinagar,+Gujarat+382419&output=embed" allowfullscreen="" loading="lazy"></iframe>
+              </div>
+              <div class="contact-info-card">
+                <div class="contact-info-item"><i class="fas fa-map-pin"></i><div><strong>Shop Address</strong><p>First Floor, Pramukh Anand Orbit Mall, 191, Reliance Cross Rd, Kudasan, Gandhinagar, Gujarat 382419</p></div></div>
+                <div class="contact-info-item"><i class="fas fa-phone-alt"></i><div><strong>Phone</strong><p>94082 82463 / 87808 43021</p></div></div>
+                <div class="contact-info-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><p>veeruinfotech408@gmail.com</p></div></div>
+                <div class="contact-info-item"><i class="fas fa-clock"></i><div><strong>Working Hours</strong><p>Mon – Sat: 10:00 AM – 8:00 PM</p></div></div>
+              </div>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Pramukh+Anand+Orbit+Mall,+Reliance+Cross+Rd,+Kudasan,+Gandhinagar,+Gujarat+382419" target="_blank" class="btn" style="width: 100%; margin-top: 1.5rem;"><i class="fas fa-directions"></i> Get Directions</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    `
+  };
+
+  // ============================================================
+  // SERVICE DETAIL RENDERER
+  // ============================================================
+  function renderServiceDetail(serviceId) {
+    const s = serviceData[serviceId];
+    if (!s) { renderPage('services'); return; }
+
+    const includedHTML = s.included.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('');
+    const quickHTML = s.quickFeatures.map(f => `<li><i class="fas fa-check"></i> ${f}</li>`).join('');
+    const chargeHTML = s.chargeTable.map(row => `<tr><td><strong>${row.service}</strong></td><td>${row.desc}</td><td class="price-col">${row.price}</td></tr>`).join('');
+    const stepsHTML = s.steps.map(step => `<li>${step}</li>`).join('');
+    const faqHTML = s.faqs.map((faq, i) => `<div class="faq-item" data-faq="${i}"><div class="faq-question" onclick="toggleFaq(${i})"><span>${faq.q}</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer">${faq.a}</div></div>`).join('');
+    const relatedHTML = s.related.map(rel => {
+      const r = serviceData[rel];
+      if (!r) return '';
+      return `<div class="related-card" data-service="${rel}"><i class="fas ${r.icon}"></i><h4>${r.title}</h4><p>${r.subtitle}</p></div>`;
+    }).join('');
+
+    app.innerHTML = `
+      <div class="service-detail-hero">
+        <div class="container">
+          <div class="breadcrumb" style="margin-top: 0; margin-bottom: 1rem;">
+            <a data-page="home">Home</a> / <a data-page="services">Services</a> / <span>${s.title}</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;">
+            <div style="width: 70px; height: 70px; background: rgba(214, 140, 69, 0.2); border-radius: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas ${s.icon}" style="font-size: 2rem; color: var(--accent);"></i>
+            </div>
+            <div>
+              <h1 style="font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 0.4rem;">${s.title}</h1>
+              <p style="color: rgba(255,255,255,0.85); margin: 0;">${s.subtitle}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section style="padding: 3rem 0 5rem; background: var(--bg-primary);">
+        <div class="container">
+          <div class="service-detail-grid">
+            <div class="service-detail-content reveal">
+              <div class="service-detail-image"><div style="font-size: 6rem;">${s.image}</div></div>
+              <h2>About This Service</h2>
+              <p>${s.shortDesc}</p>
+              <h3><i class="fas fa-list-check"></i> What's Included</h3>
+              <ul class="included-list">${includedHTML}</ul>
+              <h3><i class="fas fa-rupee-sign"></i> Service Charges</h3>
+              <p>Transparent pricing — no hidden costs. Final price may vary based on parts required.</p>
+              <div class="charge-table-wrap">
+                <table class="charge-table">
+                  <thead><tr><th>Service</th><th>Description</th><th>Price</th></tr></thead>
+                  <tbody>${chargeHTML}</tbody>
+                </table>
+              </div>
+              <h3><i class="fas fa-route"></i> How We Work</h3>
+              <ol class="steps-list">${stepsHTML}</ol>
+              <h3><i class="fas fa-circle-question"></i> Frequently Asked Questions</h3>
+              <div>${faqHTML}</div>
+            </div>
+            <div>
+              <div class="sidebar-card reveal">
+                <div class="price-highlight">
+                  <div class="label">${s.priceLabel}</div>
+                  <div class="amount">${s.priceValue} <span>${s.priceUnit}</span></div>
+                </div>
+                <ul class="sidebar-features">${quickHTML}</ul>
+                <a data-page="contact" class="btn" style="width: 100%; margin-bottom: 0.8rem;"><i class="fas fa-calendar-check"></i> Book This Service</a>
+                <a href="tel:+919408282463" class="btn btn-outline" style="width: 100%;"><i class="fas fa-phone"></i> Call Now</a>
+              </div>
+              <div class="sidebar-card reveal" style="background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; border: none;">
+                <h3 style="color: #fff;"><i class="fas fa-headset" style="color: var(--accent);"></i> Need Help?</h3>
+                <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 1rem;">Call our support team for instant assistance.</p>
+                <p style="color: var(--accent); font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">94082 82463</p>
+                <p style="color: var(--accent); font-weight: 700; font-size: 1.1rem;">87808 43021</p>
+              </div>
+            </div>
+          </div>
+          <div class="related-services reveal">
+            <h3 style="text-align: center; color: var(--navy); margin-bottom: 0.5rem;">Other Services You May Need</h3>
+            <p style="text-align: center; color: var(--text-medium); margin-bottom: 1.5rem;">Click to view pricing and details</p>
+            <div class="related-grid">${relatedHTML}</div>
+          </div>
+        </div>
+      </section>
+    `;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(initReveal, 100);
+  }
+
+  window.toggleFaq = function(index) {
+    document.querySelectorAll('.faq-item').forEach((item, i) => {
+      if (i === index) item.classList.toggle('open');
+      else item.classList.remove('open');
+    });
+  };
+
+  // ============================================================
+  // SPA ROUTER
+  // ============================================================
+  const app = document.getElementById('app');
+  const header = document.getElementById('header');
+  const floatTop = document.getElementById('floatTop');
+
+  function renderPage(pageId) {
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.classList.remove('active');
+      if (link.dataset.page === pageId) link.classList.add('active');
+    });
+    app.innerHTML = pages[pageId] || pages.home;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (pageId === 'contact') initContactForm();
+    setTimeout(initReveal, 100);
+  }
+
+  function initReveal() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('active'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+  }
+
+  function initContactForm() {
+    const inquiryType = document.getElementById('inquiryType');
+    const dynamicGroup = document.getElementById('dynamicGroup');
+    const dynamicSelect = document.getElementById('dynamicSelect');
+    const dynamicLabel = document.getElementById('dynamicLabel');
+    if (!inquiryType) return;
+    const serviceOptions = ['AC Service', 'TV Repair', 'Refrigerator Repair', 'CCTV Installation', 'Laptop Repair', 'Computer Repair', 'Chip Level Repair', 'Printer Service', 'Chimney Repair', 'WiFi Setup'];
+    const productOptions = ['Laptop', 'Desktop PC', 'CCTV Camera', 'Printer', 'Cartridge', 'WiFi Router', 'Solar Camera', 'Accessories', 'Storage / RAM'];
+    inquiryType.addEventListener('change', function() {
+      const val = this.value;
+      dynamicSelect.innerHTML = '';
+      if (val === 'Service') {
+        dynamicLabel.innerHTML = 'Select Service <span class="required">*</span>';
+        dynamicSelect.name = 'Service Type';
+        serviceOptions.forEach(opt => { const o = document.createElement('option'); o.value = opt; o.textContent = opt; dynamicSelect.appendChild(o); });
+        dynamicGroup.style.display = 'block'; dynamicSelect.required = true;
+      } else if (val === 'Product Inquiry') {
+        dynamicLabel.innerHTML = 'Select Product <span class="required">*</span>';
+        dynamicSelect.name = 'Product Type';
+        productOptions.forEach(opt => { const o = document.createElement('option'); o.value = opt; o.textContent = opt; dynamicSelect.appendChild(o); });
+        dynamicGroup.style.display = 'block'; dynamicSelect.required = true;
+      } else {
+        dynamicGroup.style.display = 'none'; dynamicSelect.required = false;
+      }
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    const serviceTarget = e.target.closest('[data-service]');
+    if (serviceTarget) {
+      e.preventDefault();
+      renderServiceDetail(serviceTarget.dataset.service);
+      document.getElementById('navLinks').classList.remove('open');
+      return;
+    }
+    const pageTarget = e.target.closest('[data-page]');
+    if (pageTarget) {
+      e.preventDefault();
+      renderPage(pageTarget.dataset.page);
+      document.getElementById('navLinks').classList.remove('open');
+    }
+  });
+
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  mobileToggle.addEventListener('click', function() {
+    navLinks.classList.toggle('open');
+    const icon = this.querySelector('i');
+    icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times');
+  });
+  document.addEventListener('click', function(e) {
+    if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+      navLinks.classList.remove('open');
+      const icon = mobileToggle.querySelector('i');
+      icon.classList.add('fa-bars'); icon.classList.remove('fa-times');
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    header.classList.toggle('scrolled', scrollY > 50);
+    floatTop.classList.toggle('visible', scrollY > 500);
+  });
+  floatTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  renderPage('home');
+</script>
+
+</body>
+</html>
