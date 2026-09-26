@@ -117,12 +117,6 @@
     @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
-    @keyframes bounceIn {
-      0% { opacity: 0; transform: scale(0.3); }
-      50% { opacity: 1; transform: scale(1.05); }
-      70% { transform: scale(0.95); }
-      100% { transform: scale(1); }
-    }
     @keyframes tickerScroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -135,14 +129,12 @@
     .animate-up { animation: fadeInUp 0.8s ease-out both; }
     .animate-left { animation: slideInLeft 0.8s ease-out both; }
     .animate-right { animation: slideInRight 0.8s ease-out both; }
-    .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; }
-    .delay-3 { animation-delay: 0.3s; } .delay-4 { animation-delay: 0.4s; }
 
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
     /* ============================================================
-       TOP BAR — FIXED
+       TOP BAR
        ============================================================ */
     .top-bar {
       position: fixed;
@@ -173,7 +165,7 @@
     .top-bar .divider { margin: 0 0.8rem; opacity: 0.3; }
 
     /* ============================================================
-       HEADER — FIXED BELOW TOP BAR
+       HEADER
        ============================================================ */
     header {
       position: fixed;
@@ -201,7 +193,7 @@
       gap: 1rem;
     }
 
-        .logo {
+    .logo {
       font-size: 1.55rem;
       font-weight: 800;
       color: var(--navy);
@@ -257,7 +249,6 @@
       z-index: 1003;
       padding: 6px;
     }
-    header:not(.scrolled) .mobile-toggle { color: #5d1010; }
 
     /* ============================================================
        HERO
@@ -771,8 +762,28 @@
        ============================================================ */
     .about-section { padding: 5rem 0; background: var(--bg-secondary); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .about-image { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); }
-    .about-image img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
+    .about-image {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
+  background: var(--bg-tertiary);
+  width: 100%;
+}
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.6s ease;
+}
+.about-image:hover img {
+  transform: scale(1.04);
+}
     .about-content h2 { margin-bottom: 1.5rem; color: var(--navy); }
     .about-content p { color: var(--text-medium); margin-bottom: 1.2rem; font-size: 1rem; }
     .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
@@ -1037,9 +1048,8 @@
     .float-top:hover { transform: translateY(-5px); background: var(--accent-dark); }
 
     /* ============================================================
-       RESPONSIVE — FIXED
+       RESPONSIVE
        ============================================================ */
-
     @media (max-width: 1024px) {
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -1632,7 +1642,7 @@
       <section class="about-section">
         <div class="container">
           <div class="about-grid">
-            <div class="about-image reveal"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='450' viewBox='0 0 600 450'%3E%3Crect width='600' height='450' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' fill='%23a28b72' text-anchor='middle' dy='.3em'%3E🔧 Expert Technicians%3C/text%3E%3C/svg%3E" alt="Veeru Infotech"></div>
+            <div class="about-image reveal"><img src="photos/veerutech.png" alt="Veeru Infotech Team"></div>
             <div class="about-content reveal">
               <h2>About Veeru Infotech</h2>
               <p>Veeru Infotech is a one-stop shop for all your computer, laptop, CCTV, and IT accessory needs. Based in Kudasan, Gandhinagar, we have built a reputation for honest pricing, expert technicians, and reliable after-sales support.</p>
@@ -1669,7 +1679,7 @@
       <section class="about-section">
         <div class="container">
           <div class="about-grid">
-            <div class="about-image reveal"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='450' viewBox='0 0 600 450'%3E%3Crect width='600' height='450' fill='%23e7ded3'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' fill='%23a28b72' text-anchor='middle' dy='.3em'%3E🏢 Veeru Infotech%3C/text%3E%3C/svg%3E" alt="About"></div>
+            <div class="about-image reveal"><img src="photos/veerutech.png" alt="Veeru Infotech Team"></div>
             <div class="about-content reveal">
               <h2>Who We Are</h2>
               <p>Veeru Infotech is a one-stop shop for all your computer, laptop, CCTV, and IT accessory needs. Based in Kudasan, Gandhinagar, we have built a reputation for honest pricing, expert technicians, and reliable after-sales support.</p>
@@ -1834,14 +1844,104 @@
           <div class="contact-grid">
             <div class="contact-form-wrapper reveal">
               <h3>Send us a message</h3>
-                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" >
+              <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="b1311ffb-e2b9-4870-973f-c052bc44ba6b">
                 <input type="hidden" name="subject" value="New Service Request - Veeru Infotech">
+                <input type="hidden" name="formatted_email" id="formattedEmail" value="">
+                
                 <div class="form-row">
                   <div class="form-group"><label for="custName">Full Name <span class="required">*</span></label><input type="text" id="custName" name="Customer Name" required placeholder="e.g. Ramesh Patel"></div>
                   <div class="form-group"><label for="custPhone">Phone <span class="required">*</span></label><input type="tel" id="custPhone" name="Phone" required placeholder="98765 43210"></div>
                 </div>
-                <div class="form-group"><label for="custAddress">Address <span class="required">*</span></label><input type="text" id="custAddress" name="Address" required placeholder="Area, City"></div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="custCity">City <span class="required">*</span></label>
+                    <select id="custCity" name="City" required>
+                      <option value="">-- Select City --</option>
+                      <optgroup label="🏙️ Major Cities">
+                        <option value="Ahmedabad">Ahmedabad</option>
+                        <option value="Gandhinagar">Gandhinagar</option>
+                        <option value="Surat">Surat</option>
+                        <option value="Vadodara">Vadodara</option>
+                        <option value="Rajkot">Rajkot</option>
+                      </optgroup>
+                      <optgroup label="🏘️ North Gujarat">
+                        <option value="Mehsana">Mehsana</option>
+                        <option value="Palanpur">Palanpur</option>
+                        <option value="Himatnagar">Himatnagar</option>
+                        <option value="Kalol">Kalol</option>
+                        <option value="Deesa">Deesa</option>
+                        <option value="Patan">Patan</option>
+                        <option value="Siddhpur">Siddhpur</option>
+                        <option value="Visnagar">Visnagar</option>
+                        <option value="Unjha">Unjha</option>
+                        <option value="Modasa">Modasa</option>
+                      </optgroup>
+                      <optgroup label="🏘️ Central Gujarat">
+                        <option value="Anand">Anand</option>
+                        <option value="Nadiad">Nadiad</option>
+                        <option value="Kheda">Kheda</option>
+                        <option value="Godhra">Godhra</option>
+                        <option value="Dahod">Dahod</option>
+                        <option value="Vallabh Vidyanagar">Vallabh Vidyanagar</option>
+                        <option value="Karamsad">Karamsad</option>
+                        <option value="Petlad">Petlad</option>
+                        <option value="Borsad">Borsad</option>
+                        <option value="Khambhat">Khambhat</option>
+                      </optgroup>
+                      <optgroup label="🏘️ South Gujarat">
+                        <option value="Bharuch">Bharuch</option>
+                        <option value="Ankleshwar">Ankleshwar</option>
+                        <option value="Navsari">Navsari</option>
+                        <option value="Valsad">Valsad</option>
+                        <option value="Vapi">Vapi</option>
+                        <option value="Bardoli">Bardoli</option>
+                        <option value="Vyara">Vyara</option>
+                        <option value="Bilimora">Bilimora</option>
+                        <option value="Daman">Daman</option>
+                        <option value="Silvassa">Silvassa</option>
+                      </optgroup>
+                      <optgroup label="🏘️ Saurashtra">
+                        <option value="Jamnagar">Jamnagar</option>
+                        <option value="Bhavnagar">Bhavnagar</option>
+                        <option value="Junagadh">Junagadh</option>
+                        <option value="Gandhidham">Gandhidham</option>
+                        <option value="Bhuj">Bhuj</option>
+                        <option value="Porbandar">Porbandar</option>
+                        <option value="Morbi">Morbi</option>
+                        <option value="Surendranagar">Surendranagar</option>
+                        <option value="Amreli">Amreli</option>
+                        <option value="Botad">Botad</option>
+                        <option value="Veraval">Veraval</option>
+                        <option value="Dwarka">Dwarka</option>
+                        <option value="Gondal">Gondal</option>
+                        <option value="Jetpur">Jetpur</option>
+                        <option value="Dhoraji">Dhoraji</option>
+                        <option value="Wadhwan">Wadhwan</option>
+                        <option value="Limbdi">Limbdi</option>
+                        <option value="Dhrangadhra">Dhrangadhra</option>
+                        <option value="Mahuva">Mahuva</option>
+                        <option value="Palitana">Palitana</option>
+                        <option value="Sihor">Sihor</option>
+                        <option value="Keshod">Keshod</option>
+                        <option value="Mangrol">Mangrol</option>
+                        <option value="Una">Una</option>
+                        <option value="Diu">Diu</option>
+                      </optgroup>
+                      <optgroup label="🏘️ Kutch">
+                        <option value="Bhachau">Bhachau</option>
+                        <option value="Anjar">Anjar</option>
+                        <option value="Mandvi">Mandvi</option>
+                        <option value="Mundra">Mundra</option>
+                        <option value="Rapar">Rapar</option>
+                      </optgroup>
+                      <optgroup label="🌆 Other">
+                        <option value="Other">Other City</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  <div class="form-group"><label for="custAddress">Address <span class="required">*</span></label><input type="text" id="custAddress" name="Address" required placeholder="e.g. Near Bus Stand"></div>
+                </div>
                 <div class="form-group"><label for="inquiryType">Inquiry Type <span class="required">*</span></label><select id="inquiryType" name="Inquiry Type" required><option value="">-- Select --</option><option value="Service">Service</option><option value="Product Inquiry">Product Inquiry</option></select></div>
                 <div class="form-group" id="dynamicGroup" style="display: none;"><label for="dynamicSelect" id="dynamicLabel">Select</label><select id="dynamicSelect" name="Specific Service/Product"></select></div>
                 <div class="form-group"><label for="message">Other Description / Message</label><textarea id="message" name="Message" placeholder="Tell us more about your requirement..."></textarea></div>
@@ -1998,24 +2098,80 @@
     const dynamicGroup = document.getElementById('dynamicGroup');
     const dynamicSelect = document.getElementById('dynamicSelect');
     const dynamicLabel = document.getElementById('dynamicLabel');
-    if (!inquiryType) return;
+    const form = document.getElementById('contactForm');
+    if (!inquiryType || !form) return;
+
     const serviceOptions = ['AC Service', 'TV Repair', 'Refrigerator Repair', 'CCTV Installation', 'Laptop Repair', 'Computer Repair', 'Chip Level Repair', 'Printer Service', 'Chimney Repair', 'WiFi Setup'];
     const productOptions = ['Laptop', 'Desktop PC', 'CCTV Camera', 'Printer', 'Cartridge', 'WiFi Router', 'Solar Camera', 'Accessories', 'Storage / RAM'];
+
     inquiryType.addEventListener('change', function() {
       const val = this.value;
       dynamicSelect.innerHTML = '';
       if (val === 'Service') {
         dynamicLabel.innerHTML = 'Select Service <span class="required">*</span>';
-        dynamicSelect.name = 'Service Type';
+        dynamicSelect.name = 'Specific Service/Product';
         serviceOptions.forEach(opt => { const o = document.createElement('option'); o.value = opt; o.textContent = opt; dynamicSelect.appendChild(o); });
         dynamicGroup.style.display = 'block'; dynamicSelect.required = true;
       } else if (val === 'Product Inquiry') {
         dynamicLabel.innerHTML = 'Select Product <span class="required">*</span>';
-        dynamicSelect.name = 'Product Type';
+        dynamicSelect.name = 'Specific Service/Product';
         productOptions.forEach(opt => { const o = document.createElement('option'); o.value = opt; o.textContent = opt; dynamicSelect.appendChild(o); });
         dynamicGroup.style.display = 'block'; dynamicSelect.required = true;
       } else {
         dynamicGroup.style.display = 'none'; dynamicSelect.required = false;
+      }
+    });
+
+    // ✅ Build formatted email with Part 1 / Part 2 blocks
+    form.addEventListener('submit', function() {
+      const name = (document.getElementById('custName') || {}).value || '';
+      const phone = (document.getElementById('custPhone') || {}).value || '';
+      const city = (document.getElementById('custCity') || {}).value || '';
+      const address = (document.getElementById('custAddress') || {}).value || '';
+      const inquiry = (document.getElementById('inquiryType') || {}).value || '';
+      const specific = dynamicSelect.value || '—';
+      const message = ((document.getElementById('message') || {}).value || '—').trim();
+
+      const divider = '━━━━━━━━━━━━━━━━━━━━━━━━━━━';
+
+      const part1 = `
+${divider}
+📋 PART 1 — SHARE WITH TECHNICIANS
+${divider}
+Customer Name : ${name}
+Phone         : ${phone}
+City          : ${city}
+${divider}
+      `.trim();
+
+      const part2 = `
+${divider}
+🛠️ PART 2 — FULL JOB DETAILS
+${divider}
+City          : ${city}
+Inquiry Type  : ${inquiry}
+${inquiry === 'Service' ? 'Service      ' : 'Product      '} : ${specific}
+Description   : ${message}
+${divider}
+      `.trim();
+
+      const fullAddress = `
+${divider}
+📌 FULL ADDRESS (internal use only)
+${divider}
+Address       : ${address}, ${city}, Gujarat
+${divider}
+      `.trim();
+
+      const formattedField = document.getElementById('formattedEmail');
+      if (formattedField) {
+        formattedField.value = `\n${part1}\n\n${part2}\n\n${fullAddress}\n`;
+      }
+
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.disabled = true;
       }
     });
   }
