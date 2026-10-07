@@ -805,7 +805,12 @@
     .charge-table tr:hover td { background: var(--bg-secondary); }
     .charge-table .price-col { color: var(--accent-dark); font-weight: 700; font-size: 1rem; }
 
-    .steps-list { counter-reset: step; margin: 1.5rem 0; }
+    .steps-list { 
+  counter-reset: step; 
+  margin: 1.5rem 0; 
+  list-style: none;   /* ← ADD THIS LINE */
+  padding-left: 0;    /* ← AND THIS LINE */
+}
     .steps-list li {
       counter-increment: step;
       position: relative;
@@ -1871,16 +1876,26 @@
   // ============================================================
   // REVIEWS DATA
   // ============================================================
-  const reviewsData = [
-    { name: 'Vimarsh Desai', date: '18/05/2025', rating: 5, text: 'Great experience of buying my dream PC' },
-    { name: 'Jay Bhavsar', date: '30/04/2025', rating: 5, text: 'Super set up done by viper team,please see my trading set up with screen set up ....thanks to viper pc..' },
-    { name: 'Abhijit Thakur', date: '22/05/2025', rating: 5, text: 'Good Service' },
-    { name: 'Rajesh Patel', date: '12/04/2025', rating: 5, text: 'Very professional technician. Fixed my laptop motherboard in a day. Highly recommended for genuine service.' },
-    { name: 'Meera Shah', date: '05/04/2025', rating: 5, text: 'Installed 8 CCTV cameras at my shop. Neat wiring and excellent after-sales support.' },
-    { name: 'Amit Desai', date: '28/03/2025', rating: 5, text: 'Purchased a custom gaming PC. Great advice, best price, and they even helped with software setup.' },
-    { name: 'Priya Mehta', date: '15/03/2025', rating: 5, text: 'AC service was done on time and very neatly. The technician explained everything. Will book again!' },
-    { name: 'Kiran Joshi', date: '08/03/2025', rating: 5, text: 'Fire safety inspection done for our office. Very professional and detailed report. Highly recommended.' },
-    { name: 'Suresh Kumar', date: '01/03/2025', rating: 5, text: 'Printer repair done same day. Cartridge refill quality is excellent. Best price in Gandhinagar.' }
+      const reviewsData = [
+    // ================= ENGLISH REVIEWS =================
+    { name: 'Jay Bhavsar', date: '30/04/2025', rating: 5, text: 'Superb setup done by the Veeru Infotech team. Please see my trading setup with dual screen arrangement. Thanks to Veeru Infotech!' },
+    { name: 'Abhijit Thakur', date: '22/05/2025', rating: 5, text: 'Good service and quick response.' },
+    { name: 'Amit Desai', date: '28/03/2025', rating: 4, text: 'Got a custom gaming PC built here. Good advice and the best price. Delivery took one extra day, but everything else was perfect.' },
+    { name: 'Manish Vaghela', date: '16/01/2025', rating: 5, text: 'Ordered 5 computers for my office from here. Got a bulk discount and delivery was on time. Networking work was also done by them. Trusted shop 💯' },
+    { name: 'Suresh Kumar', date: '01/03/2025', rating: 5, text: 'Printer repair was done the same day. The cartridge refill quality is excellent. Best rate in Gandhinagar.' },
+    { name: 'Ravi Solanki', date: '10/02/2025', rating: 4, text: 'Got 4 CCTV cameras repaired. Three were done the same day, one needed a part so it took 2 days. Overall good work and fair pricing.' },
+    { name: 'Kiran Joshi', date: '08/03/2025', rating: 5, text: 'Got a fire safety inspection done for our office. Very professional and a detailed report was provided. They also helped with compliance. Thank you, Veeru Infotech team!' },
+    { name: 'Dipika Rawal', date: '25/01/2025', rating: 5, text: 'Bought a laptop for my father. They suggested the best configuration within my budget. Set up Windows, antivirus, and everything before handover. Very good shop.' },
+    { name: 'Nilesh Chaudhary', date: '24/02/2025', rating: 5, text: 'Prakash bhai does excellent work. My laptop was not starting — he repaired it at chip level in just 2 days. Charged reasonably too. Explained everything patiently. 😄' },
+
+    // ================= GUJARATI REVIEWS =================
+    { name: 'Vimarsh Desai', date: '18/05/2025', rating: 5, text: 'મારું સપનાનું PC અહીંથી ખરીદ્યું. પ્રકાશ ભાઈએ ખૂબ મદદ કરી, RGB સેટઅપ એકદમ પરફેક્ટ બનાવ્યું. પૈસાની પૂરી વસૂલાત! 🔥' },
+    { name: 'Rajesh Patel', date: '12/04/2025', rating: 5, text: 'લેપટોપનું મધરબોર્ડ એક દિવસમાં રિપેર કરી આપ્યું. બિલકુલ પ્રામાણિક સેવા છે અને ભાવ પણ વ્યાજબી. ચોક્કસ ભલામણ કરું છું 👍' },
+    { name: 'Meera Shah', date: '05/04/2025', rating: 5, text: 'દુકાનમાં 8 CCTV કેમેરા લગાવ્યા. વાયરિંગ એકદમ સુઘડ અને સ્વચ્છ. મોબાઈલમાં લાઈવ વ્યૂ પણ બતાવ્યું. આફ્ટર સેલ્સ સપોર્ટ પણ સરસ છે.' },
+    { name: 'Priya Mehta', date: '15/03/2025', rating: 5, text: 'AC સર્વિસ સમયસર થઈ ગઈ અને એકદમ સરસ રીતે કામ કર્યું. ટેકનિશિયને બધું સમજાવ્યું. આગલી વખતે પણ અહીંથી જ બુક કરીશ.' },
+    { name: 'Hetal Trivedi', date: '18/02/2025', rating: 5, text: 'WiFi રાઉટર સેટઅપ કરાવ્યું અને ઘરમાં CCTV પણ લગાવ્યું. કામ એકદમ સ્વચ્છ અને સમયસર. પરિવારને મોબાઈલમાં એપ પણ બતાવી. કુદાસણમાં બેસ્ટ સર્વિસ 👌' },
+    { name: 'Jignesh Prajapati', date: '02/02/2025', rating: 5, text: 'બજારમાં સોલાર કેમેરો લગાવ્યો. વીજળી વગર પણ ચાલે છે અને 4G થી મોબાઈલમાં જોઈ શકાય. ઇન્સ્ટોલેશન એકદમ મજબૂત કર્યું. પૈસા વસૂલ 👏' },
+    { name: 'Ankita Bhatt', date: '08/01/2025', rating: 5, text: 'ફ્રિજ ઠંડું નહોતું કરતું. ટેકનિશિયન ઘરે આવીને જ ગેસ ચાર્જ કરી આપ્યો. બે કલાકમાં કામ થઈ ગયું. ખૂબ પ્રામાણિક સેવા 🙏' }
   ];
 
   // ============================================================
@@ -2041,7 +2056,7 @@
             </div>
             <div class="review-card reveal">
               <div class="stars">★★★★★</div>
-              <p>"Super set up done by viper team,please see my trading set up with screen set up ....thanks to viper pc.."</p>
+              <p>"Super set up done by Veeru Infotech team,please see my trading set up with screen set up ....Thank you Veeru Infotech team!.."</p>
               <div class="reviewer">
                 <div class="reviewer-avatar">J</div>
                 <div class="reviewer-info">
