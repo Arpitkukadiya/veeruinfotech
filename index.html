@@ -41,6 +41,163 @@
       --topbar-height: 30px;
       --header-height: 68px;
     }
+    
+    /* ============================================================
+       NAVRATRI DISCOUNT POPUP
+       ============================================================ */
+    .navratri-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 43, 74, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    .navratri-popup-overlay.show { opacity: 1; visibility: visible; }
+    .navratri-popup {
+      background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
+      border-radius: 24px;
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+      overflow: hidden;
+      transform: scale(0.85) translateY(30px);
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 3px solid #d68c45;
+    }
+    .navratri-popup-overlay.show .navratri-popup { transform: scale(1) translateY(0); }
+    .navratri-popup::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, #d68c45, #e74c3c, #f5b342, #d68c45, #e74c3c, #f5b342);
+      background-size: 300% 100%;
+      animation: gradientShift 4s ease infinite;
+    }
+    .navratri-close {
+      position: absolute;
+      top: 16px; right: 16px;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(26, 43, 74, 0.08);
+      border: none;
+      color: var(--navy);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      z-index: 2;
+    }
+    .navratri-close:hover { background: #e74c3c; color: #fff; transform: rotate(90deg); }
+    .navratri-popup-body { padding: 40px 30px 30px; text-align: center; position: relative; }
+    .navratri-emoji-row { font-size: 1.8rem; letter-spacing: 0.5rem; margin-bottom: 12px; animation: float 3s ease-in-out infinite; }
+    .navratri-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #e74c3c, #d68c45);
+      color: #fff;
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 14px rgba(231, 76, 60, 0.35);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .navratri-popup h2 { font-size: 1.9rem; color: var(--navy); margin-bottom: 6px; line-height: 1.15; font-weight: 800; }
+    .navratri-popup h2 span { color: var(--accent); display: inline-block; }
+    .navratri-discount-big {
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #d68c45, #e74c3c, #f5b342);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin: 14px 0 6px;
+      letter-spacing: -2px;
+      animation: bounceIn 0.8s ease-out;
+    }
+    .navratri-discount-label { font-size: 0.85rem; color: var(--text-medium); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; }
+    .navratri-popup p.navratri-desc { color: var(--text-medium); font-size: 0.95rem; line-height: 1.65; margin-bottom: 22px; padding: 0 8px; }
+    .navratri-popup p.navratri-desc strong { color: var(--accent-dark); }
+    .navratri-whatsapp-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      margin-bottom: 12px;
+    }
+    .navratri-whatsapp-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37, 211, 102, 0.55); }
+    .navratri-whatsapp-btn i { font-size: 1.3rem; }
+    .navratri-call-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 24px;
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--border-light);
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .navratri-call-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .navratri-terms { font-size: 0.72rem; color: var(--text-light); margin-top: 16px; line-height: 1.5; }
+    .navratri-terms i { color: var(--accent); margin-right: 4px; }
+    .navratri-confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.7;
+      animation: floatUp 3s ease-in infinite;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      20% { opacity: 0.8; }
+      100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+    }
+    @media (max-width: 480px) {
+      .navratri-popup { border-radius: 20px; }
+      .navratri-popup-body { padding: 34px 20px 24px; }
+      .navratri-popup h2 { font-size: 1.5rem; }
+      .navratri-discount-big { font-size: 2.8rem; }
+      .navratri-emoji-row { font-size: 1.5rem; letter-spacing: 0.3rem; }
+      .navratri-whatsapp-btn { padding: 14px 20px; font-size: 0.92rem; }
+      .navratri-close { top: 12px; right: 12px; width: 30px; height: 30px; }
+    }
 
     html { scroll-behavior: smooth; }
 
@@ -117,22 +274,10 @@
     @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
-    @keyframes tickerScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    @keyframes starPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.25); }
-    }
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
+    @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    @keyframes starPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
     @keyframes bounceIn {
       0% { opacity: 0; transform: scale(0.5); }
       60% { opacity: 1; transform: scale(1.08); }
@@ -151,9 +296,7 @@
        ============================================================ */
     .top-bar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: var(--topbar-height);
       background: linear-gradient(90deg, var(--navy), var(--navy-light));
       color: #fff;
@@ -183,8 +326,7 @@
     header {
       position: fixed;
       top: var(--topbar-height);
-      left: 0;
-      right: 0;
+      left: 0; right: 0;
       width: 100%;
       height: var(--header-height);
       z-index: 1001;
@@ -309,7 +451,22 @@
     .hero-content h1 { color: #fff; margin-bottom: 1.5rem; }
     .hero-content h1 span { color: var(--accent); }
     .hero-content p { font-size: clamp(1rem, 2vw, 1.2rem); color: rgba(255,255,255,0.85); margin-bottom: 2.5rem; }
-    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ============================================================
+       HERO BUTTONS — 2 × 2 GRID LAYOUT
+       ============================================================ */
+    .hero-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .hero-buttons .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
     .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; flex-wrap: wrap; }
     .hero-stat { text-align: center; color: #fff; }
     .hero-stat h3 { font-size: 2.2rem; color: var(--accent); font-weight: 800; }
@@ -356,11 +513,7 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    .ticker-item i {
-      color: var(--accent);
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
+    .ticker-item i { color: var(--accent); font-size: 1rem; flex-shrink: 0; }
 
     /* ============================================================
        SERVICES
@@ -395,18 +548,8 @@
       transition: transform 0.4s ease;
     }
     .service-card:hover:before { transform: scaleX(1); }
-    .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-xl);
-      border-color: var(--accent-light);
-    }
-    .service-card i {
-      font-size: 2.4rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      transition: var(--transition);
-      display: inline-block;
-    }
+    .service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-xl); border-color: var(--accent-light); }
+    .service-card i { font-size: 2.4rem; color: var(--accent); margin-bottom: 1rem; transition: var(--transition); display: inline-block; }
     .service-card:hover i { transform: scale(1.2) rotate(-5deg); }
     .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
     .service-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
@@ -509,11 +652,7 @@
       display: flex;
       flex-direction: column;
     }
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-      border-color: var(--accent-light);
-    }
+    .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-xl); border-color: var(--accent-light); }
     .product-image {
       height: 220px;
       background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
@@ -533,47 +672,20 @@
       text-transform: uppercase; letter-spacing: 0.5px;
     }
     .product-badge.new { background: var(--green); }
-     /* Coming Soon / Not Available badge */
-    .service-card.coming-soon {
-      opacity: 0.75;
-      position: relative;
-    }
-    .service-card.coming-soon:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
+    .service-card.coming-soon { opacity: 0.75; position: relative; }
+    .service-card.coming-soon:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
     .service-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      padding: 0.35rem 0.7rem;
-      border-radius: 50px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      position: absolute; top: 12px; right: 12px;
+      font-size: 0.65rem; font-weight: 700;
+      padding: 0.35rem 0.7rem; border-radius: 50px;
+      text-transform: uppercase; letter-spacing: 0.5px;
       z-index: 2;
     }
-    .service-badge.coming {
-      background: #f5b342;
-      color: #fff;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    .service-badge.hot {
-      background: #e74c3c;
-      color: #fff;
-    }
-    .service-badge.bestseller {
-      background: var(--green);
-      color: #fff;
-    }
-    .service-card.coming-soon .card-link {
-      color: var(--text-light);
-      cursor: not-allowed;
-    }
-    .service-card.coming-soon .card-link:hover {
-      gap: 0.4rem;
-    }
+    .service-badge.coming { background: #f5b342; color: #fff; animation: pulse 2s ease-in-out infinite; }
+    .service-badge.hot { background: #e74c3c; color: #fff; }
+    .service-badge.bestseller { background: var(--green); color: #fff; }
+    .service-card.coming-soon .card-link { color: var(--text-light); cursor: not-allowed; }
+    .service-card.coming-soon .card-link:hover { gap: 0.4rem; }
     .product-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
     .product-category { font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; }
     .product-info h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 0.6rem; font-weight: 700; }
@@ -630,7 +742,6 @@
       min-width: 0;
     }
     .service-detail-grid > * { min-width: 0; }
-
     .service-detail-content {
       background: var(--bg-card);
       border-radius: var(--radius);
@@ -656,7 +767,6 @@
     }
     .service-detail-content h3 i { color: var(--accent); font-size: 1.1rem; }
     .service-detail-content p { color: var(--text-medium); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.8; }
-
     .service-detail-image {
       border-radius: var(--radius);
       overflow: hidden;
@@ -677,17 +787,13 @@
       object-fit: cover;
       transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .service-detail-image:hover img {
-      transform: scale(1.08);
-    }
+    .service-detail-image:hover img { transform: scale(1.08); }
     .service-detail-image .img-emoji-overlay {
       position: absolute;
-      bottom: 12px;
-      right: 12px;
+      bottom: 12px; right: 12px;
       font-size: 2.2rem;
       background: rgba(255,255,255,0.95);
-      width: 60px;
-      height: 60px;
+      width: 60px; height: 60px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -695,7 +801,6 @@
       box-shadow: var(--shadow-md);
       animation: float 4s ease-in-out infinite;
     }
-
     .included-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -715,7 +820,6 @@
     }
     .included-list li:hover { background: var(--accent-light); transform: translateX(5px); }
     .included-list li i { color: var(--green); font-size: 0.95rem; margin-top: 3px; flex-shrink: 0; }
-
     .sidebar-card {
       background: var(--bg-card);
       border-radius: var(--radius);
@@ -735,7 +839,6 @@
       gap: 0.5rem;
     }
     .sidebar-card h3 i { color: var(--accent); }
-
     .price-highlight {
       text-align: center;
       padding: 1.5rem 0;
@@ -743,21 +846,9 @@
       border-radius: var(--radius-sm);
       margin-bottom: 1.5rem;
     }
-    .price-highlight .label {
-      font-size: 0.8rem;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 0.5rem;
-    }
-    .price-highlight .amount {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--accent-dark);
-      line-height: 1;
-    }
+    .price-highlight .label { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .price-highlight .amount { font-size: 2.2rem; font-weight: 800; color: var(--accent-dark); line-height: 1; }
     .price-highlight .amount span { font-size: 0.9rem; font-weight: 400; color: var(--text-light); }
-
     .sidebar-features { margin-bottom: 1.5rem; }
     .sidebar-features li {
       display: flex;
@@ -770,7 +861,6 @@
     }
     .sidebar-features li:last-child { border-bottom: none; }
     .sidebar-features li i { color: var(--accent); width: 18px; text-align: center; flex-shrink: 0; }
-
     .charge-table-wrap {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -781,36 +871,13 @@
     }
     .charge-table-wrap::-webkit-scrollbar { height: 6px; }
     .charge-table-wrap::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
-    .charge-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: var(--bg-card);
-      min-width: 420px;
-    }
-    .charge-table th {
-      background: var(--navy);
-      color: #fff;
-      padding: 1rem;
-      text-align: left;
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-    .charge-table td {
-      padding: 1rem;
-      border-bottom: 1px solid var(--border-light);
-      font-size: 0.9rem;
-      color: var(--text-medium);
-    }
+    .charge-table { width: 100%; border-collapse: collapse; background: var(--bg-card); min-width: 420px; }
+    .charge-table th { background: var(--navy); color: #fff; padding: 1rem; text-align: left; font-size: 0.88rem; font-weight: 600; }
+    .charge-table td { padding: 1rem; border-bottom: 1px solid var(--border-light); font-size: 0.9rem; color: var(--text-medium); }
     .charge-table tr:last-child td { border-bottom: none; }
     .charge-table tr:hover td { background: var(--bg-secondary); }
     .charge-table .price-col { color: var(--accent-dark); font-weight: 700; font-size: 1rem; }
-
-    .steps-list { 
-  counter-reset: step; 
-  margin: 1.5rem 0; 
-  list-style: none;   /* ← ADD THIS LINE */
-  padding-left: 0;    /* ← AND THIS LINE */
-}
+    .steps-list { counter-reset: step; margin: 1.5rem 0; list-style: none; padding-left: 0; }
     .steps-list li {
       counter-increment: step;
       position: relative;
@@ -834,7 +901,6 @@
       font-weight: 700;
       font-size: 0.85rem;
     }
-
     .faq-item {
       border: 1px solid var(--border-light);
       border-radius: var(--radius-sm);
@@ -869,12 +935,7 @@
       line-height: 1.7;
     }
     .faq-item.open .faq-answer { max-height: 300px; padding: 1rem 1.2rem 1.2rem; }
-
-    .related-services {
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--border-light);
-    }
+    .related-services { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border-light); }
     .related-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -890,12 +951,7 @@
       transition: var(--transition);
       border: 1px solid transparent;
     }
-    .related-card:hover {
-      background: var(--bg-card);
-      border-color: var(--accent-light);
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-    }
+    .related-card:hover { background: var(--bg-card); border-color: var(--accent-light); transform: translateY(-5px); box-shadow: var(--shadow-md); }
     .related-card i { font-size: 1.8rem; color: var(--accent); margin-bottom: 0.8rem; display: inline-block; }
     .related-card h4 { font-size: 0.95rem; color: var(--navy); margin-bottom: 0.3rem; }
     .related-card p { font-size: 0.78rem; color: var(--text-light); }
@@ -940,7 +996,7 @@
     .stat-item p { font-size: 0.85rem; color: var(--text-light); margin: 0; }
 
     /* ============================================================
-       REVIEWS (Google-style feedback)
+       REVIEWS
        ============================================================ */
     .reviews-section { padding: 5rem 0; background: var(--bg-primary); }
     .review-grid {
@@ -970,8 +1026,6 @@
     }
     .reviewer-info strong { display: block; font-size: 0.9rem; color: var(--text-dark); }
     .reviewer-info span { font-size: 0.78rem; color: var(--text-light); display: flex; align-items: center; gap: 0.3rem; }
-
-    /* Google rating banner */
     .google-rating-banner {
       text-align: center;
       margin-bottom: 2.5rem;
@@ -981,35 +1035,10 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid var(--border-light);
     }
-    .google-rating-banner .excellent-label {
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      color: var(--text-medium);
-      font-weight: 600;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .google-rating-banner .big-stars {
-      font-size: 1.8rem;
-      color: #f5b342;
-      letter-spacing: 4px;
-      margin-bottom: 0.5rem;
-    }
-    .google-rating-banner .based-on {
-      font-size: 0.75rem;
-      color: var(--text-light);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-    .google-logo-text {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -1px;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
+    .google-rating-banner .excellent-label { font-size: 0.8rem; letter-spacing: 3px; color: var(--text-medium); font-weight: 600; text-transform: uppercase; margin-bottom: 0.6rem; }
+    .google-rating-banner .big-stars { font-size: 1.8rem; color: #f5b342; letter-spacing: 4px; margin-bottom: 0.5rem; }
+    .google-rating-banner .based-on { font-size: 0.75rem; color: var(--text-light); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .google-logo-text { font-size: 1.8rem; font-weight: 700; letter-spacing: -1px; display: inline-flex; align-items: center; gap: 0.3rem; }
     .google-logo-text .g-blue { color: #4285F4; }
     .google-logo-text .g-red { color: #EA4335; }
     .google-logo-text .g-yellow { color: #FBBC05; }
@@ -1031,7 +1060,6 @@
     .why-item i { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; transition: var(--transition); display: inline-block; }
     .why-item:hover i { transform: scale(1.15); }
     .why-item h4 { font-size: 1rem; color: var(--text-dark); font-weight: 600; }
-
     .process-section { padding: 5rem 0; background: var(--bg-primary); }
     .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 2rem; margin-top: 2rem; }
     .process-step { text-align: center; padding: 2rem 1rem; }
@@ -1083,7 +1111,6 @@
     }
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
     .map-container {
       border-radius: var(--radius);
       overflow: hidden;
@@ -1244,35 +1271,13 @@
       cursor: pointer;
       margin-bottom: 0.4rem;
     }
-    .star-rating i {
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
+    .star-rating i { transition: all 0.2s ease; cursor: pointer; }
     .star-rating i:hover,
-    .star-rating i.hovered {
-      color: #f5b342;
-      transform: scale(1.15);
-      animation: starPulse 0.4s ease;
-    }
-    .star-rating i.selected {
-      color: #f5b342;
-    }
-    .rating-text {
-      font-size: 0.82rem;
-      color: var(--text-light);
-      font-weight: 500;
-    }
-    .rating-text.active {
-      color: var(--accent-dark);
-      font-weight: 600;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .toggle-group {
-      display: flex;
-      gap: 0.6rem;
-      margin-top: 0.3rem;
-    }
+    .star-rating i.hovered { color: #f5b342; transform: scale(1.15); animation: starPulse 0.4s ease; }
+    .star-rating i.selected { color: #f5b342; }
+    .rating-text { font-size: 0.82rem; color: var(--text-light); font-weight: 500; }
+    .rating-text.active { color: var(--accent-dark); font-weight: 600; animation: fadeIn 0.3s ease; }
+    .toggle-group { display: flex; gap: 0.6rem; margin-top: 0.3rem; }
     .toggle-btn {
       flex: 1;
       padding: 0.85rem 1rem;
@@ -1290,10 +1295,7 @@
       justify-content: center;
       gap: 0.5rem;
     }
-    .toggle-btn:hover {
-      border-color: var(--accent-light);
-      color: var(--accent-dark);
-    }
+    .toggle-btn:hover { border-color: var(--accent-light); color: var(--accent-dark); }
     .toggle-btn.active {
       background: var(--accent);
       border-color: var(--accent);
@@ -1348,11 +1350,24 @@
       .mobile-toggle { display: block; }
 
       .hero { min-height: 75vh; padding: 40px 0; }
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .btn { width: 100%; max-width: 300px; }
       .hero-stats { gap: 1.5rem; margin-top: 2.5rem; }
       .hero-stat h3 { font-size: 1.6rem; }
       .hero-stat p { font-size: 0.75rem; }
+
+      /* Hero buttons — 2 columns with smaller text on tablet */
+      .hero-buttons {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        max-width: 100%;
+        padding: 0 8px;
+      }
+      .hero-buttons .btn {
+        padding: 0.75rem 0.8rem;
+        font-size: 0.85rem;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.3;
+      }
 
       .about-stats { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -1417,6 +1432,20 @@
       .hero-badge { font-size: 0.75rem; padding: 0.4rem 1rem; }
       .hero-content p { font-size: 0.9rem; margin-bottom: 1.8rem; }
 
+      /* Hero buttons — keep 2 columns on small phones */
+      .hero-buttons {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+      }
+      .hero-buttons .btn {
+        padding: 0.7rem 0.5rem;
+        font-size: 0.78rem;
+        gap: 0.25rem;
+      }
+      .hero-buttons .btn i {
+        display: none;
+      }
+
       .section-title { margin-bottom: 1.5rem; }
       .section-title h2 { font-size: 1.4rem; }
       .section-title p { font-size: 0.85rem; }
@@ -1454,6 +1483,7 @@
       .mobile-toggle { font-size: 1.15rem; padding: 4px; }
       .container { padding: 0 12px; }
       .top-bar { font-size: 0.65rem; }
+      .hero-buttons .btn { font-size: 0.72rem; padding: 0.6rem 0.4rem; }
     }
 
     /* ============================================================
@@ -1483,6 +1513,57 @@
 </head>
 <body>
 
+<!-- NAVRATRI DISCOUNT POPUP — CCTV & COMPUTER ACCESSORIES -->
+<div class="navratri-popup-overlay" id="navratriPopup">
+  <div class="navratri-popup">
+    <button class="navratri-close" id="navratriClose" aria-label="Close popup">
+      <i class="fas fa-times"></i>
+    </button>
+    <div class="navratri-popup-body">
+      <div class="navratri-emoji-row">🪔 ✨ 🎉 ✨ 🪔</div>
+      <div class="navratri-badge">🎊 Navratri Special Offer 🎊</div>
+      <h2>Celebrate With <span>10% OFF</span></h2>
+      <div class="navratri-discount-big">10%</div>
+      <div class="navratri-discount-label">Flat Discount</div>
+
+      <div style="display:inline-block; background:var(--accent-light); color:var(--accent-dark); padding:8px 16px; border-radius:50px; font-size:0.82rem; font-weight:700; margin-bottom:16px; letter-spacing:0.5px;">
+        <i class="fas fa-video"></i> CCTV &nbsp;·&nbsp; <i class="fas fa-mouse"></i> Computer Accessories
+      </div>
+
+      <p class="navratri-desc">
+        Get <strong>10% OFF</strong> on all <strong>CCTV cameras, DVR/NVR setups</strong> and <strong>computer accessories</strong> — Mouse, Keyboard, Headset, Webcam, Pen Drive, Mouse Pad, Speakers &amp; more!
+      </p>
+
+      <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:22px;">
+        <span style="background:#fff; border:1px solid var(--border-light); padding:6px 12px; border-radius:50px; font-size:0.75rem; color:var(--text-medium); font-weight:600;">📹 CCTV Camera</span>
+        <span style="background:#fff; border:1px solid var(--border-light); padding:6px 12px; border-radius:50px; font-size:0.75rem; color:var(--text-medium); font-weight:600;">🖱️ Mouse</span>
+        <span style="background:#fff; border:1px solid var(--border-light); padding:6px 12px; border-radius:50px; font-size:0.75rem; color:var(--text-medium); font-weight:600;">⌨️ Keyboard</span>
+        <span style="background:#fff; border:1px solid var(--border-light); padding:6px 12px; border-radius:50px; font-size:0.75rem; color:var(--text-medium); font-weight:600;">🎧 Headset</span>
+        <span style="background:#fff; border:1px solid var(--border-light); padding:6px 12px; border-radius:50px; font-size:0.75rem; color:var(--text-medium); font-weight:600;">📷 Webcam</span>
+        <span style="background:#fff; border:1px solid var(--border-light); padding:6px 12px; border-radius:50px; font-size:0.75rem; color:var(--text-medium); font-weight:600;">💾 Pen Drive</span>
+        <span style="background:#fff; border:1px solid var(--border-light); padding:6px 12px; border-radius:50px; font-size:0.75rem; color:var(--text-medium); font-weight:600;">🔊 Speakers</span>
+        <span style="background:#fff; border:1px solid var(--border-light); padding:6px 12px; border-radius:50px; font-size:0.75rem; color:var(--text-medium); font-weight:600;">🟫 Mouse Pad</span>
+      </div>
+
+      <a href="https://wa.me/919408282463?text=Hi%20Veeru%20Infotech%2C%20I%20want%20to%20enquire%20about%20the%20Navratri%2010%25%20discount%20on%20CCTV%20%2F%20Computer%20Accessories.%20Please%20share%20details." 
+         target="_blank" 
+         class="navratri-whatsapp-btn" 
+         id="navratriWhatsapp">
+        <i class="fab fa-whatsapp"></i>
+        Enquire Now on WhatsApp
+      </a>
+      <a href="tel:+919408282463" class="navratri-call-btn">
+        <i class="fas fa-phone-alt"></i>
+        Or Call: 94082 82463
+      </a>
+      <p class="navratri-terms">
+        <i class="fas fa-info-circle"></i>
+        Offer valid on CCTV &amp; Computer Accessories only • Until Navratri ends • T&amp;C apply
+      </p>
+    </div>
+  </div>
+</div> 
+  
 <!-- TOP BAR -->
 <div class="top-bar">
   <div class="container top-bar-inner">
@@ -1585,6 +1666,69 @@
 </button>
 
 <script>
+  // ============================================================
+  // NAVRATRI DISCOUNT POPUP — CCTV & COMPUTER ACCESSORIES
+  // ============================================================
+  (function initNavratriPopup() {
+    const popup = document.getElementById('navratriPopup');
+    const closeBtn = document.getElementById('navratriClose');
+    const whatsappBtn = document.getElementById('navratriWhatsapp');
+
+    if (!popup || !closeBtn || !whatsappBtn) return;
+
+    whatsappBtn.href = 'https://wa.me/919408282463?text=' + encodeURIComponent(
+      'Hi Veeru Infotech, I want to enquire about the Navratri 10% discount on CCTV / Computer Accessories. Please share details.'
+    );
+
+    const dismissed = sessionStorage.getItem('navratriPopupDismissed');
+
+    if (!dismissed) {
+      setTimeout(function () {
+        popup.classList.add('show');
+        addConfetti();
+      }, 4000);
+    }
+
+    function closePopup() {
+      popup.classList.remove('show');
+      sessionStorage.setItem('navratriPopupDismissed', 'true');
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+
+    popup.addEventListener('click', function (e) {
+      if (e.target === popup) closePopup();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && popup.classList.contains('show')) {
+        closePopup();
+      }
+    });
+
+    whatsappBtn.addEventListener('click', function () {
+      setTimeout(closePopup, 800);
+    });
+
+    function addConfetti() {
+      const colors = ['#d68c45', '#e74c3c', '#f5b342', '#25D366', '#4285F4'];
+      const popupEl = popup.querySelector('.navratri-popup');
+      if (!popupEl) return;
+
+      for (let i = 0; i < 12; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'navratri-confetti';
+        dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+        dot.style.left = Math.random() * 100 + '%';
+        dot.style.bottom = '0';
+        dot.style.animationDelay = Math.random() * 2 + 's';
+        dot.style.animationDuration = (2 + Math.random() * 2) + 's';
+        popupEl.appendChild(dot);
+        setTimeout(function () { dot.remove(); }, 5000);
+      }
+    }
+  })();
+
   // ============================================================
   // SERVICE DATA (with external images)
   // ============================================================
@@ -1876,8 +2020,7 @@
   // ============================================================
   // REVIEWS DATA
   // ============================================================
-      const reviewsData = [
-    // ================= ENGLISH REVIEWS =================
+  const reviewsData = [
     { name: 'Jay Bhavsar', date: '30/04/2025', rating: 5, text: 'Superb setup done by the Veeru Infotech team. Please see my trading setup with dual screen arrangement. Thanks to Veeru Infotech!' },
     { name: 'Abhijit Thakur', date: '22/05/2025', rating: 5, text: 'Good service and quick response.' },
     { name: 'Amit Desai', date: '28/03/2025', rating: 4, text: 'Got a custom gaming PC built here. Good advice and the best price. Delivery took one extra day, but everything else was perfect.' },
@@ -1887,8 +2030,6 @@
     { name: 'Kiran Joshi', date: '08/03/2025', rating: 5, text: 'Got a fire safety inspection done for our office. Very professional and a detailed report was provided. They also helped with compliance. Thank you, Veeru Infotech team!' },
     { name: 'Dipika Rawal', date: '25/01/2025', rating: 5, text: 'Bought a laptop for my father. They suggested the best configuration within my budget. Set up Windows, antivirus, and everything before handover. Very good shop.' },
     { name: 'Nilesh Chaudhary', date: '24/02/2025', rating: 5, text: 'Prakash bhai does excellent work. My laptop was not starting — he repaired it at chip level in just 2 days. Charged reasonably too. Explained everything patiently. 😄' },
-
-    // ================= GUJARATI REVIEWS =================
     { name: 'Vimarsh Desai', date: '18/05/2025', rating: 5, text: 'મારું સપનાનું PC અહીંથી ખરીદ્યું. પ્રકાશ ભાઈએ ખૂબ મદદ કરી, RGB સેટઅપ એકદમ પરફેક્ટ બનાવ્યું. પૈસાની પૂરી વસૂલાત! 🔥' },
     { name: 'Rajesh Patel', date: '12/04/2025', rating: 5, text: 'લેપટોપનું મધરબોર્ડ એક દિવસમાં રિપેર કરી આપ્યું. બિલકુલ પ્રામાણિક સેવા છે અને ભાવ પણ વ્યાજબી. ચોક્કસ ભલામણ કરું છું 👍' },
     { name: 'Meera Shah', date: '05/04/2025', rating: 5, text: 'દુકાનમાં 8 CCTV કેમેરા લગાવ્યા. વાયરિંગ એકદમ સુઘડ અને સ્વચ્છ. મોબાઈલમાં લાઈવ વ્યૂ પણ બતાવ્યું. આફ્ટર સેલ્સ સપોર્ટ પણ સરસ છે.' },
@@ -1912,6 +2053,8 @@
           <h1>Expert Technicians at <span>Your Doorstep.</span></h1>
           <p>Sales • Service • Repair • Installation • Upgrade for computers, laptops, CCTV cameras, printers, networking, fire safety systems and more. Wholesale & Retail.</p>
           <div class="hero-buttons">
+            <a data-page="products" class="btn">Product <i class="fas fa-arrow-right"></i></a>
+            <a data-page="technician" class="btn btn-outline-white">Join as Technician</a>
             <a data-page="contact" class="btn">Book a Service <i class="fas fa-arrow-right"></i></a>
             <a data-page="services" class="btn btn-outline-white">Explore Services</a>
           </div>
@@ -1948,14 +2091,14 @@
             <p>Click any service to see detailed pricing, policies, and what's included.</p>
           </div>
           <div class="services-grid">
-            <div class="service-card reveal" data-service="ac"><i class="fas fa-snowflake"></i><h3>AC Service & Repair</h3><p>Installation, gas refill, maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
-            <div class="service-card reveal" data-service="tv"><i class="fas fa-tv"></i><h3>TV Repair</h3><p>LED, LCD, Smart TV repair.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
-            <div class="service-card reveal" data-service="fridge"><i class="fas fa-temperature-low"></i><h3>Refrigerator Repair</h3><p>Cooling issues, compressor, gas.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="cctv"><i class="fas fa-video"></i><h3>CCTV Installation & Repair</h3><p>Site survey, wiring, DVR setup.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="laptop"><i class="fas fa-laptop-medical"></i><h3>Laptop & Computer Repair</h3><p>Hardware, software, virus removal.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="chip"><i class="fas fa-microchip"></i><h3>Chip Level Repair</h3><p>Dead board & power issues.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="printer"><i class="fas fa-print"></i><h3>Printer Service</h3><p>Cartridge refill, repair & maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="fire-safety"><i class="fas fa-fire-extinguisher"></i><h3>Fire Safety System</h3><p>Inspection, alarm, extinguisher, sprinkler.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="ac"><i class="fas fa-snowflake"></i><h3>AC Service & Repair</h3><p>Installation, gas refill, maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="tv"><i class="fas fa-tv"></i><h3>TV Repair</h3><p>LED, LCD, Smart TV repair.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="fridge"><i class="fas fa-temperature-low"></i><h3>Refrigerator Repair</h3><p>Cooling issues, compressor, gas.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
           </div>
         </div>
       </section>
@@ -2162,7 +2305,7 @@
       </div>
       <div class="product-grid">
 
-        <!-- ═══════════════ MOUSE ═══════════════ -->
+        <!-- MOUSE -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge">Popular</span>
             <img src="https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&q=80" alt="Wireless Mouse" style="max-height:150px; object-fit:contain;">
@@ -2189,7 +2332,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ KEYBOARD ═══════════════ -->
+        <!-- KEYBOARD -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge new">New</span>
             <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&q=80" alt="Wireless Keyboard" style="max-height:150px; object-fit:contain;">
@@ -2216,7 +2359,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ MONITOR ═══════════════ -->
+        <!-- MONITOR -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge">Best Seller</span>
             <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&q=80" alt="Monitor" style="max-height:150px; object-fit:contain;">
@@ -2243,7 +2386,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ CABINET ═══════════════ -->
+        <!-- CABINET -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&q=80" alt="PC Cabinet" style="max-height:150px; object-fit:contain;">
@@ -2270,7 +2413,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ SMPS / POWER SUPPLY ═══════════════ -->
+        <!-- SMPS -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&q=80" alt="SMPS" style="max-height:150px; object-fit:contain;">
@@ -2297,7 +2440,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ RAM ═══════════════ -->
+        <!-- RAM -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge new">Hot</span>
             <img src="https://images.unsplash.com/photo-1562976540-1502c2145186?w=400&q=80" alt="RAM" style="max-height:150px; object-fit:contain;">
@@ -2337,7 +2480,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ SSD ═══════════════ -->
+        <!-- SSD -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge new">Fast</span>
             <img src="https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=400&q=80" alt="SSD" style="max-height:150px; object-fit:contain;">
@@ -2377,7 +2520,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ HDD ═══════════════ -->
+        <!-- HDD -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=400&q=80" alt="HDD" style="max-height:150px; object-fit:contain;">
@@ -2404,7 +2547,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ MOTHERBOARD ═══════════════ -->
+        <!-- MOTHERBOARD -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" alt="Motherboard" style="max-height:150px; object-fit:contain;">
@@ -2431,7 +2574,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ GRAPHICS CARD ═══════════════ -->
+        <!-- GRAPHICS CARD -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge new">New</span>
             <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&q=80" alt="Graphics Card" style="max-height:150px; object-fit:contain;">
@@ -2458,7 +2601,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ PROCESSOR ═══════════════ -->
+        <!-- PROCESSOR -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=400&q=80" alt="Intel CPU" style="max-height:150px; object-fit:contain;">
@@ -2485,7 +2628,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ CPU COOLER ═══════════════ -->
+        <!-- CPU COOLER -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&q=80" alt="CPU Cooler" style="max-height:150px; object-fit:contain;">
@@ -2512,7 +2655,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ WEBCAM ═══════════════ -->
+        <!-- WEBCAM -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=400&q=80" alt="Webcam" style="max-height:150px; object-fit:contain;">
@@ -2526,7 +2669,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ HEADSET ═══════════════ -->
+        <!-- HEADSET -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Headset" style="max-height:150px; object-fit:contain;">
@@ -2540,7 +2683,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ SPEAKERS ═══════════════ -->
+        <!-- SPEAKERS -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?w=400&q=80" alt="Speakers" style="max-height:150px; object-fit:contain;">
@@ -2554,7 +2697,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ PEN DRIVE ═══════════════ -->
+        <!-- PEN DRIVE -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1618410320928-25228d811631?w=400&q=80" alt="Pen Drive" style="max-height:150px; object-fit:contain;">
@@ -2568,7 +2711,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ UPS ═══════════════ -->
+        <!-- UPS -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?w=400&q=80" alt="UPS" style="max-height:150px; object-fit:contain;">
@@ -2582,7 +2725,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ MOUSE PAD ═══════════════ -->
+        <!-- MOUSE PAD -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&q=80" alt="Mouse Pad" style="max-height:150px; object-fit:contain;">
@@ -2596,7 +2739,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ ROUTER ═══════════════ -->
+        <!-- ROUTER -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&q=80" alt="Router" style="max-height:150px; object-fit:contain;">
@@ -2610,7 +2753,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ LAPTOP ═══════════════ -->
+        <!-- LAPTOP -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge">Best Seller</span>
             <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80" alt="Laptop" style="max-height:150px; object-fit:contain;">
@@ -2624,7 +2767,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ CUSTOM PC BUILDS ═══════════════ -->
+        <!-- CUSTOM PC -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge new">Custom</span>
             <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&q=80" alt="Gaming PC" style="max-height:150px; object-fit:contain;">
@@ -2664,7 +2807,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ CCTV ═══════════════ -->
+        <!-- CCTV -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge new">Hot</span>
             <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=400&q=80" alt="CCTV" style="max-height:150px; object-fit:contain;">
@@ -2691,7 +2834,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ PRINTER ═══════════════ -->
+        <!-- PRINTER -->
         <div class="product-card reveal">
           <div class="product-image">
             <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&q=80" alt="Printer" style="max-height:150px; object-fit:contain;">
@@ -2705,7 +2848,7 @@
           </div>
         </div>
 
-        <!-- ═══════════════ FIRE EXTINGUISHER ═══════════════ -->
+        <!-- FIRE EXTINGUISHER -->
         <div class="product-card reveal">
           <div class="product-image"><span class="product-badge">Safety</span>
             <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&q=80" alt="Fire Extinguisher" style="max-height:150px; object-fit:contain;">
@@ -2740,14 +2883,14 @@
             <p>Each service page includes pricing, what's included, and FAQs.</p>
           </div>
           <div class="services-grid">
-            <div class="service-card reveal" data-service="ac"><i class="fas fa-snowflake"></i><h3>AC Service & Repair</h3><p>Installation, gas refill, maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
-            <div class="service-card reveal" data-service="tv"><i class="fas fa-tv"></i><h3>TV Repair</h3><p>LED, LCD, Smart TV repair.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
-            <div class="service-card reveal" data-service="fridge"><i class="fas fa-temperature-low"></i><h3>Refrigerator Repair</h3><p>Cooling issues, compressor, gas.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="cctv"><i class="fas fa-video"></i><h3>CCTV Installation & Repair</h3><p>Site survey, wiring, DVR setup.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="laptop"><i class="fas fa-laptop-medical"></i><h3>Laptop & Computer Repair</h3><p>Hardware, software, virus removal.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="chip"><i class="fas fa-microchip"></i><h3>Chip Level Repair</h3><p>Dead board & power issues.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="printer"><i class="fas fa-print"></i><h3>Printer Service</h3><p>Cartridge refill, repair & maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
             <div class="service-card reveal" data-service="fire-safety"><i class="fas fa-fire-extinguisher"></i><h3>Fire Safety System</h3><p>Inspection, alarm, extinguisher, sprinkler.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="ac"><i class="fas fa-snowflake"></i><h3>AC Service & Repair</h3><p>Installation, gas refill, maintenance.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="tv"><i class="fas fa-tv"></i><h3>TV Repair</h3><p>LED, LCD, Smart TV repair.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
+            <div class="service-card reveal" data-service="fridge"><i class="fas fa-temperature-low"></i><h3>Refrigerator Repair</h3><p>Cooling issues, compressor, gas.</p><span class="card-link">View Details <i class="fas fa-arrow-right"></i></span></div>
           </div>
         </div>
       </section>
@@ -3155,7 +3298,7 @@
   };
 
   // ============================================================
-  // SERVICE DETAIL RENDERER (with external photo)
+  // SERVICE DETAIL RENDERER
   // ============================================================
   function renderServiceDetail(serviceId) {
     const s = serviceData[serviceId];
@@ -3306,7 +3449,7 @@
   }
 
   // ============================================================
-  // CONTACT FORM (Customer)
+  // CONTACT FORM
   // ============================================================
   function initContactForm() {
     const inquiryType = document.getElementById('inquiryType');
